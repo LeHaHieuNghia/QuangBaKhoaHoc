@@ -19,9 +19,11 @@ const Header = () => {
       columnSpacing={{ xs: 1, sm: 2, md: 3 }}
       sx={{ margin: 0, padding: 0, backgroundColor: "#0E2148" }}
     >
+      {/* Display logo website */}
       <Grid size={2} sx={{ display: "flex", justifyContent: "center" }}>
         <Box component={"img"} src={Logo} sx={{ width: 100 }} />
       </Grid>
+      {/* CTA highlight */}
       <Grid
         size={3}
         sx={{
@@ -35,6 +37,7 @@ const Header = () => {
           Đăng ký học ngay – Chỉ còn 3,599,000đ!
         </Typography>
       </Grid>
+      {/* menu options */}
       <Grid size={7}>
         <Box
           sx={{
