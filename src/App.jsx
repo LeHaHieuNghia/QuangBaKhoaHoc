@@ -10,7 +10,7 @@ import Testimonials from "./component/testimonials.jsx";
 
 export const App = () => {
   return (
-    <Grid container justifyContent="center">
+    <Grid justifyContent="center" margin={0}>
       <Grid item xs={12} sm={10} md={8} lg={6}>
         <Stack
           spacing={{ xs: 1, sm: 2 }}
