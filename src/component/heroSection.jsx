@@ -1,12 +1,12 @@
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Typography, Box, Container } from "@mui/material";
 import Button from "@mui/material/Button";
 import React from "react";
 import Background from "../assets/Background1.jpg"; // Đảm bảo đường dẫn đúng
 
 const HeroSection = () => {
   const title = [
-    { id: 1, text: "Ứng Dụng AI" },
-    { id: 2, text: "Để Làm Việc Thông Minh Hơn" },
+    { id: 1, text: "Ứng Dụng AI - X2 Năng Suất Làm Việc" },
+    // { id: 2, text: "Để Làm Việc Thông Minh Hơn" },
   ];
   const subtitle = [
     {
@@ -15,61 +15,95 @@ const HeroSection = () => {
     },
     {
       id: 2,
-      text: "cấp chứng chỉ chuẩn OpenAI",
+      text: "Cấp chứng chỉ chuẩn OpenAI",
     },
   ];
   return (
-    <Grid>
-      <Box sx={{ position: "relative", width: "100vw", height: "100vh" }}>
-        {/* Hình nền */}
-        <Box
-          component="img"
-          src={Background}
-          alt="Background"
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            zIndex: 1,
-          }}
-        />
+    <Box sx={{ position: "relative", width: "100%", height: "100vh" }}>
+      {/* Background Image */}
+      <Box
+        component="img"
+        src={Background}
+        alt="Background"
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 1,
+        }}
+      />
 
-        {/* Nội dung đè lên */}
+      {/* Content Overlay */}
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          height: "100%",
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+          pt: "150px",
+          ml: "-30px",
+        }}
+      >
         <Box
           sx={{
-            position: "absolute",
-            top: "35%",
-            left: "28%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 2,
-            color: "white",
+            maxWidth: "900px",
+            width: "100%",
             textAlign: "center",
+            px: { xs: 2, sm: 3, md: 1 },
           }}
         >
           {title.map((item) => (
-            <Typography color="#FFB800" variant="h2" fontWeight="bold">
-              {item.text}
-            </Typography>
-          ))}
-          {subtitle.map((item) => (
             <Typography
               key={item.id}
-              variant="h5"
-              sx={{ marginTop: 2, color: "white" }}
+              sx={{
+                width: "100%",
+                color: "#FFB800",
+                fontSize: { xs: "2rem", sm: "2.5rem", md: "4rem" },
+                fontWeight: "bold",
+                mb: { xs: 2, sm: 3 },
+                lineHeight: 1.2,
+              }}
             >
               {item.text}
             </Typography>
           ))}
+
+          {subtitle.map((item) => (
+            <Typography
+              key={item.id}
+              sx={{
+                fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
+                color: "white",
+                mb: { xs: 1, sm: 1.5 },
+                lineHeight: 1.5,
+              }}
+            >
+              {item.text}
+            </Typography>
+          ))}
+
           <Button
             sx={{
-              top: 220,
-              right: 100,
-              width: 300,
-              height: 70,
+              width: { xs: "100%", sm: "350px", md: "400px" },
+              height: { xs: "50px", sm: "60px", md: "70px" },
               backgroundColor: "#FFB800",
+              fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
+              fontWeight: "bold",
+              mt: { xs: 3, sm: 4, md: 5 },
+              borderRadius: "8px",
+
+              "&:hover": {
+                backgroundColor: "#E6A600",
+                transform: "scale(1.05)",
+                transition: "all 0.3s ease",
+              },
             }}
             variant="contained"
             disableElevation
@@ -77,9 +111,8 @@ const HeroSection = () => {
             Học thử miễn phí
           </Button>
         </Box>
-        <Box></Box>
-      </Box>
-    </Grid>
+      </Container>
+    </Box>
   );
 };
 

@@ -11,11 +11,11 @@ import Testimonials from "./component/testimonials.jsx";
 export const App = () => {
   return (
     <Grid justifyContent="center" margin={0}>
-      <Grid item xs={12} sm={10} md={8} lg={6}>
+      <Grid item xs={6} sm={10} md={8} lg={6}>
         <Stack
           spacing={{ xs: 1, sm: 2 }}
           direction="column"
-          useFlexGap
+          // useFlexGap
           sx={{ width: "100%" }}
         >
           <Header />
