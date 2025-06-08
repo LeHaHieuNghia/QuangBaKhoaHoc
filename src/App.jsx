@@ -1,4 +1,4 @@
-import { Grid, Stack } from "@mui/material";
+import { Grid, Stack, useTheme } from "@mui/material";
 import Header from "./component/header.jsx";
 import HeroSection from "./component/heroSection.jsx";
 import Benefit from "./component/benefitsOfLearning.jsx";
@@ -9,6 +9,7 @@ import Form from "./component/registrationForm.jsx";
 import Testimonials from "./component/testimonials.jsx";
 
 export const App = () => {
+  const theme = useTheme();
   return (
     <Grid justifyContent="center" margin={0}>
       <Grid item xs={6} sm={10} md={8} lg={6}>
@@ -16,7 +17,7 @@ export const App = () => {
           spacing={{ xs: 1, sm: 2 }}
           direction="column"
           // useFlexGap
-          sx={{ width: "100%" }}
+          sx={{ background: theme.palette.grey[100], width: "100%" }}
         >
           <Header />
           <HeroSection />
