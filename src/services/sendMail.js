@@ -20,7 +20,7 @@ export const SendMail = async (data) => {
     );
     return {
       success: true,
-      message: "Thông tin đã được gửi đến email.",
+      message: "Đăng ký thành công.",
       response,
     };
   } catch (error) {

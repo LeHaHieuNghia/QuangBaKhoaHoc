@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Card,
@@ -7,12 +7,15 @@ import {
   TextField,
   Button,
   MenuItem,
+  Grid, // Import Grid component
   Stack,
+  useTheme,
 } from "@mui/material";
-
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { SendMail } from "../services/sendMail";
 import { LoadingPopup } from "./popup/LoadingPopup";
 import { PositionData } from "../data/positionData";
+
 const jobOptions = PositionData;
 
 const Form = () => {
@@ -31,13 +34,13 @@ const Form = () => {
     position: "",
   });
 
+  const theme = useTheme();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Cập nhật giá trị
     setData((prev) => ({ ...prev, [name]: value }));
 
-    // Validation theo từng field
     switch (name) {
       case "name":
         setError((prev) => ({
@@ -90,89 +93,148 @@ const Form = () => {
       alert(`${result?.message} ${result?.error}`);
     }
   };
+
   function clearData() {
-    (data.name = ""),
-      (data.phone = ""),
-      (data.email = ""),
-      (data.position = "");
+    setData({
+      name: "",
+      phone: "",
+      email: "",
+      position: "",
+    });
   }
+
   return (
     <>
       <LoadingPopup open={isLoading} />
-      <Box display="flex" justifyContent="center" py={4}>
-        <Card
-          sx={{ maxWidth: 500, width: "100%", boxShadow: 3, borderRadius: 2 }}
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          pt: 4,
+          pb: 4,
+        }}
+      >
+        <Box
+          sx={{
+            maxWidth: 900,
+            width: "100%",
+            p: { xs: 2, sm: 4 },
+            borderRadius: 3,
+            boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)",
+            background: "linear-gradient(145deg, #ffffff, #f0f0f0)",
+          }}
         >
-          <CardContent>
-            <Typography variant="h5" fontWeight={600} mb={2} textAlign="center">
-              Đăng ký ngay hôm nay <br />
-              Nhận ưu đãi 50% hôm nay!
-            </Typography>
+          <Typography
+            variant="h4"
+            fontWeight={700}
+            mb={1}
+            textAlign="center"
+            color={theme.palette.primary.main}
+          >
+            Khám Phá Cơ Hội Mới!
+          </Typography>
+          <Typography
+            variant="h6"
+            mb={3}
+            textAlign="center"
+            color={theme.palette.text.secondary}
+          >
+            Đăng ký ngay để nhận ưu đãi <strong>ĐẶC BIỆT 50%</strong> chỉ trong
+            hôm nay!
+          </Typography>
 
-            <form onSubmit={handleSubmit}>
-              <Stack spacing={2}>
-                <TextField
-                  label="Họ tên"
-                  name="name"
-                  required
-                  fullWidth
-                  value={data.name}
-                  onChange={handleChange}
-                  error={!!error.name}
-                  helperText={error.name}
-                />
-                <TextField
-                  label="Email"
-                  name="email"
-                  type="email"
-                  required
-                  fullWidth
-                  value={data.email}
-                  onChange={handleChange}
-                  error={!!error.email}
-                  helperText={error.email}
-                />
-                <TextField
-                  label="Số điện thoại"
-                  name="phone"
-                  type="tel"
-                  required
-                  fullWidth
-                  value={data.phone}
-                  onChange={handleChange}
-                  error={!!error.phone}
-                  helperText={error.phone}
-                />
-                <TextField
-                  select
-                  label="Vị trí công việc"
-                  name="position"
-                  required
-                  fullWidth
-                  value={data.position}
-                  onChange={handleChange}
-                  error={!!error.position}
-                  helperText={error.position}
-                >
-                  {jobOptions.map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {option}
-                    </MenuItem>
-                  ))}
-                </TextField>
+          <form onSubmit={handleSubmit}>
+            <Grid container spacing={4}>
+              {/* Bên trái: Họ tên, email, điện thoại */}
+              <Grid item xs={12} md={6}>
+                <Stack spacing={3}>
+                  <TextField
+                    label="Họ và tên của bạn"
+                    name="name"
+                    required
+                    fullWidth
+                    value={data.name}
+                    onChange={handleChange}
+                    error={!!error.name}
+                    helperText={error.name}
+                  />
+                  <TextField
+                    label="Email của bạn"
+                    name="email"
+                    type="email"
+                    required
+                    fullWidth
+                    value={data.email}
+                    onChange={handleChange}
+                    error={!!error.email}
+                    helperText={error.email}
+                  />
+                  <TextField
+                    label="Số điện thoại liên hệ"
+                    name="phone"
+                    type="tel"
+                    required
+                    fullWidth
+                    value={data.phone}
+                    onChange={handleChange}
+                    error={!!error.phone}
+                    helperText={error.phone}
+                  />
+                </Stack>
+              </Grid>
 
-                <Button
-                  type="submit"
-                  variant="contained"
-                  size="large"
-                  sx={{ bgcolor: "#1976d2", color: "#fff", fontWeight: "bold" }}
+              {/* Bên phải: chọn job + submit */}
+              <Grid item xs={12} md={6}>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="space-between"
+                  height="100%"
                 >
-                  Đăng ký ngay
-                </Button>
-              </Stack>
-            </form>
-          </CardContent>
-        </Card>
+                  <TextField
+                    select
+                    label="Chọn vị trí công việc"
+                    name="position"
+                    required
+                    fullWidth
+                    value={data.position}
+                    onChange={handleChange}
+                    error={!!error.position}
+                    helperText={error.position}
+                  >
+                    {jobOptions.map((option) => (
+                      <MenuItem key={option} value={option}>
+                        {option}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    size="large"
+                    fullWidth
+                    endIcon={<CheckCircleOutlineIcon />}
+                    sx={{
+                      py: 1.5,
+                      fontSize: "1.1rem",
+                      fontWeight: "bold",
+                      bgcolor: theme.palette.success.main,
+                      mt: 4,
+                      "&:hover": {
+                        bgcolor: theme.palette.success.dark,
+                      },
+                      borderRadius: 2,
+                    }}
+                  >
+                    Đăng ký ngay
+                  </Button>
+                </Box>
+              </Grid>
+            </Grid>
+          </form>
+        </Box>
       </Box>
     </>
   );
