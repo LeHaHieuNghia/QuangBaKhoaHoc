@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, keyframes, Typography } from "@mui/material";
 import React from "react";
 import TapHuanTieuThuong from "../assets/Tap-huan-tieu-thuong-Q5.jpg";
 import AI_HTV from "../assets/AI-HTV-4.jpg";
@@ -6,8 +6,17 @@ import BaoNguoiLaoDong from "../assets/Bao-Nguoi-Lao-Dong.jpg";
 import DoanhNhan from "../assets/Doanh-Nhan.jpg";
 import VNPT from "../assets/Lop-Content-VNPT-h3.jpg";
 import { UserData } from "../data/userData";
-
+import Form from "./registrationForm";
 const Testimonials = () => {
+  // Tạo animation "bounce shake"
+  const bounceShake = keyframes`
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+`;
   const listOrg = [
     "Liên Đoàn Lao Động Bình Dương",
     "Hiệp Hội Doanh nhân Bình Phước",
@@ -186,6 +195,26 @@ const Testimonials = () => {
             </Box>
           ))}
         </Box>
+      </Box>
+      <Box mt={5} display="flex" justifyContent="center">
+        <Button
+          sx={{
+            backgroundColor: "#FFB800",
+            color: "#fff",
+            fontWeight: "bold",
+            px: 4,
+            py: 1.5,
+            borderRadius: 2,
+            animation: `${bounceShake} 1s ease-in-out`,
+            "&:hover": {
+              backgroundColor: "#00d600",
+              animation: `${bounceShake} 01s ease-in-out`,
+            },
+            animationIterationCount: "infinite",
+          }}
+        >
+          Đăng ký ngay
+        </Button>
       </Box>
     </Box>
   );
