@@ -9,25 +9,30 @@ import TimelineDot from "@mui/lab/TimelineDot";
 
 const roadmapData = [
   {
-    title: "Tổng quan về AI",
+    title: "Tư duy nền tảng về AI – Lý do AI thay đổi cuộc chơi",
     description:
       "Tìm hiểu về lịch sử, khái niệm và ứng dụng của AI trong thực tế",
-    duration: "2 tuần",
+    // duration: "2 tuần",
   },
   {
-    title: "Công cụ AI cơ bản",
+    title: "Làm chủ ChatGPT trong công việc",
     description: "Làm quen với ChatGPT, Midjourney và các công cụ AI phổ biến",
-    duration: "3 tuần",
+    // duration: "3 tuần",
   },
   {
-    title: "Ứng dụng AI trong công việc",
+    title: "AI cho Marketing, Content, HR, Sales",
     description: "Học cách tích hợp AI vào quy trình làm việc hàng ngày",
-    duration: "4 tuần",
+    // duration: "4 tuần",
   },
   {
-    title: "Dự án thực tế",
+    title: "Tự động hóa công việc với công cụ AI miễn phí",
     description: "Áp dụng kiến thức vào các dự án thực tế và nhận chứng chỉ",
-    duration: "3 tuần",
+    // duration: "3 tuần",
+  },
+  {
+    title: "Dự án cuối khóa + Nhận chứng chỉ OpenAI Foundation Knowledge",
+    description: "Áp dụng kiến thức vào các dự án thực tế và nhận chứng chỉ",
+    // duration: "3 tuần",
   },
 ];
 
@@ -51,26 +56,66 @@ const CourseRoadmap = () => {
 
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
-            <Timeline position="right">
+            <Timeline
+              position="right"
+              sx={{
+                // Trên mobile, đặt timeline về bên trái và giảm padding
+                [`@media (max-width: 768px)`]: {
+                  position: "left",
+                  padding: 0,
+                  margin: 0,
+                },
+              }}
+            >
               {roadmapData.map((item, index) => (
-                <TimelineItem key={index}>
+                <TimelineItem
+                  key={index}
+                  sx={{
+                    // Trên mobile, giảm khoảng cách giữa các item
+                    [`@media (max-width: 768px)`]: {
+                      minHeight: "auto",
+                      "&::before": {
+                        display: "none", // Ẩn line connector trên mobile nếu cần
+                      },
+                    },
+                  }}
+                >
                   <TimelineSeparator>
-                    <TimelineDot sx={{ bgcolor: "#FFB800" }} />
+                    <TimelineDot
+                      sx={{
+                        bgcolor: "#FFB800",
+                        // Trên mobile, làm nhỏ dot lại
+                        width: { xs: 12, md: 16 },
+                        height: { xs: 12, md: 16 },
+                      }}
+                    />
                     {index < roadmapData.length - 1 && (
                       <TimelineConnector sx={{ bgcolor: "#FFB800" }} />
                     )}
                   </TimelineSeparator>
-                  <TimelineContent>
+                  <TimelineContent
+                    sx={{
+                      // Trên mobile, giảm padding bên trái
+                      paddingLeft: { xs: 1, md: 2 },
+                      paddingRight: { xs: 0, md: 2 },
+                    }}
+                  >
                     <Paper
                       elevation={3}
                       sx={{
+                        // Sửa lại padding - giá trị 12 quá lớn cho mobile
                         p: { xs: 2, md: 3 },
-                        mb: 2,
+                        mb: { xs: 1.5, md: 2 },
                         transition: "transform 0.3s ease-in-out",
                         "&:hover": {
-                          transform: "translateX(8px)",
+                          transform: {
+                            xs: "translateX(4px)",
+                            md: "translateX(8px)",
+                          },
                           boxShadow: 4,
                         },
+                        // Trên mobile, giảm border radius
+                        borderRadius: { xs: 2, md: 3 },
                       }}
                     >
                       <Typography
@@ -79,8 +124,10 @@ const CourseRoadmap = () => {
                         sx={{
                           fontWeight: "bold",
                           color: "#0E2148",
-                          fontSize: { xs: "1.1rem", md: "1.25rem" },
-                          mb: 1,
+                          fontSize: { xs: "1rem", md: "1.25rem" },
+                          // Sửa lại margin bottom - giá trị 6 quá lớn
+                          mb: { xs: 1, md: 1.5 },
+                          lineHeight: { xs: 1.3, md: 1.4 },
                         }}
                       >
                         {item.title}
@@ -90,7 +137,8 @@ const CourseRoadmap = () => {
                         color="text.secondary"
                         sx={{
                           fontSize: { xs: "0.875rem", md: "1rem" },
-                          mb: 1,
+                          mb: { xs: 0.5, md: 1 },
+                          lineHeight: { xs: 1.4, md: 1.5 },
                         }}
                       >
                         {item.description}
@@ -101,81 +149,16 @@ const CourseRoadmap = () => {
                           color: "#FFB800",
                           fontWeight: "bold",
                           display: "block",
+                          fontSize: { xs: "0.75rem", md: "0.875rem" },
                         }}
                       >
-                        Thời lượng: {item.duration}
+                        {/* Thời lượng: {item.duration} */}
                       </Typography>
                     </Paper>
                   </TimelineContent>
                 </TimelineItem>
               ))}
             </Timeline>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Box
-              sx={{
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                p: { xs: 2, md: 4 },
-              }}
-            >
-              <Typography
-                variant="h5"
-                sx={{
-                  fontWeight: "bold",
-                  color: "#0E2148",
-                  mb: 3,
-                  fontSize: { xs: "1.25rem", md: "1.5rem" },
-                }}
-              >
-                Tại sao nên chọn lộ trình này?
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "text.secondary",
-                  mb: 2,
-                  fontSize: { xs: "0.875rem", md: "1rem" },
-                  lineHeight: 1.6,
-                }}
-              >
-                • Lộ trình được thiết kế bởi các chuyên gia AI hàng đầu
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "text.secondary",
-                  mb: 2,
-                  fontSize: { xs: "0.875rem", md: "1rem" },
-                  lineHeight: 1.6,
-                }}
-              >
-                • Nội dung cập nhật liên tục theo xu hướng mới nhất
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "text.secondary",
-                  mb: 2,
-                  fontSize: { xs: "0.875rem", md: "1rem" },
-                  lineHeight: 1.6,
-                }}
-              >
-                • Thực hành trực tiếp với các dự án thực tế
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "text.secondary",
-                  fontSize: { xs: "0.875rem", md: "1rem" },
-                  lineHeight: 1.6,
-                }}
-              >
-                • Hỗ trợ 1-1 từ giảng viên trong suốt khóa học
-              </Typography>
-            </Box>
           </Grid>
         </Grid>
       </Container>
