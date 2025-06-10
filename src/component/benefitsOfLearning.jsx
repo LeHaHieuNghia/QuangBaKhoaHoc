@@ -15,13 +15,13 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 const benefits = [
   {
     icon: <SpeedIcon sx={{ fontSize: 40 }} />,
-    title: "Tăng hiệu suất làm việc",
+    title: "Tăng năng suất 3 lần với AI văn phòng",
     description:
       "Học cách sử dụng AI để tự động hóa các công việc thường xuyên, giúp tăng năng suất lên gấp đôi",
   },
   {
     icon: <WorkIcon sx={{ fontSize: 40 }} />,
-    title: "Cơ hội nghề nghiệp",
+    title: "Tiết kiệm thời gian soạn thảo, báo cáo, slide, marketing",
     description:
       "Mở rộng cơ hội việc làm với kỹ năng AI được săn đón trong thị trường lao động hiện nay",
   },
@@ -33,7 +33,7 @@ const benefits = [
   },
   {
     icon: <TrendingUpIcon sx={{ fontSize: 40 }} />,
-    title: "Phát triển bản thân",
+    title: "Biết cách đặt câu hỏi thông minh với ChatGPT",
     description:
       "Cập nhật kiến thức mới nhất về AI, giúp bạn luôn đi đầu trong lĩnh vực công nghệ",
   },
@@ -45,7 +45,6 @@ const Benefit = () => {
       <Container maxWidth="lg">
         <Typography
           variant="h3"
-          component="h2"
           align="center"
           sx={{
             mb: { xs: 4, md: 6 },
@@ -57,7 +56,12 @@ const Benefit = () => {
           Lợi ích khi tham gia khóa học
         </Typography>
 
-        <Grid container spacing={{ xs: 2, md: 4 }}>
+        <Grid
+          container
+          spacing={{ xs: 2, md: 4 }}
+          justifyContent="center"
+          alignItems="center"
+        >
           {benefits.map((benefit, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
               <Card
@@ -73,7 +77,17 @@ const Benefit = () => {
                 }}
               >
                 <CardContent
-                  sx={{ flexGrow: 1, textAlign: "center", p: { xs: 2, md: 3 } }}
+                  sx={{
+                    flexGrow: 1,
+                    textAlign: "center",
+                    p: { xs: 2, md: 3 },
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100%",
+                    width: 800,
+                  }}
                 >
                   <Box
                     sx={{

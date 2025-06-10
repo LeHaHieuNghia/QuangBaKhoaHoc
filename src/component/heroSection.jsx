@@ -19,7 +19,17 @@ const HeroSection = () => {
     },
   ];
   return (
-    <Box sx={{ position: "relative", width: "100%", height: "100vh" }}>
+    <Box
+      id="intro"
+      sx={{
+        // position: "relative",
+        width: "100%",
+        height: "100vh",
+        overflow: "hidden",
+        scrollMarginTop: "80px", // Add space for fixed header
+        scrolled: { backgroundColor: "white" },
+      }}
+    >
       {/* Background Image */}
       <Box
         component="img"
@@ -38,11 +48,10 @@ const HeroSection = () => {
 
       {/* Content Overlay */}
       <Container
-        maxWidth="lg"
         sx={{
           position: "relative",
           height: "100%",
-          zIndex: 2,
+          zIndex: 1,
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
@@ -53,10 +62,10 @@ const HeroSection = () => {
       >
         <Box
           sx={{
-            maxWidth: "900px",
+            maxWidth: "100%",
             width: "100%",
             textAlign: "center",
-            px: { xs: 2, sm: 3, md: 1 },
+            px: { xs: 2, sm: 3, md: 3 },
           }}
         >
           {title.map((item) => (
@@ -91,13 +100,15 @@ const HeroSection = () => {
 
           <Button
             sx={{
-              width: { xs: "100%", sm: "350px", md: "400px" },
-              height: { xs: "50px", sm: "60px", md: "70px" },
+              width: { xs: "90%", sm: "350px", md: "400px" },
+              height: { xs: "45px", sm: "60px", md: "70px" },
               backgroundColor: "#FFB800",
-              fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
+              fontSize: { xs: "0.9rem", sm: "1.25rem", md: "1.5rem" },
               fontWeight: "bold",
               mt: { xs: 3, sm: 4, md: 5 },
               borderRadius: "8px",
+              mx: "auto",
+              display: "block",
 
               "&:hover": {
                 backgroundColor: "#E6A600",
@@ -108,7 +119,7 @@ const HeroSection = () => {
             variant="contained"
             disableElevation
           >
-            Học thử miễn phí
+            Đăng ký ngay
           </Button>
         </Box>
       </Container>

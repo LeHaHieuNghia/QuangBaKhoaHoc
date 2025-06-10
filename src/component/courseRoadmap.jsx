@@ -6,71 +6,145 @@ import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
+import Background1 from "../assets/Background1.jpg";
 
 const roadmapData = [
   {
-    title: "Tổng quan về AI",
+    title: "Tư duy nền tảng về AI – Lý do AI thay đổi cuộc chơi",
     description:
       "Tìm hiểu về lịch sử, khái niệm và ứng dụng của AI trong thực tế",
-    duration: "2 tuần",
+    // duration: "2 tuần",
   },
   {
-    title: "Công cụ AI cơ bản",
+    title: "Làm chủ ChatGPT trong công việc",
     description: "Làm quen với ChatGPT, Midjourney và các công cụ AI phổ biến",
-    duration: "3 tuần",
+    // duration: "3 tuần",
   },
   {
-    title: "Ứng dụng AI trong công việc",
+    title: "AI cho Marketing, Content, HR, Sales",
     description: "Học cách tích hợp AI vào quy trình làm việc hàng ngày",
-    duration: "4 tuần",
+    // duration: "4 tuần",
   },
   {
-    title: "Dự án thực tế",
+    title: "Tự động hóa công việc với công cụ AI miễn phí",
     description: "Áp dụng kiến thức vào các dự án thực tế và nhận chứng chỉ",
-    duration: "3 tuần",
+    // duration: "3 tuần",
+  },
+  {
+    title: "Dự án cuối khóa + Nhận chứng chỉ OpenAI Foundation Knowledge",
+    description: "Áp dụng kiến thức vào các dự án thực tế và nhận chứng chỉ",
+    // duration: "3 tuần",
   },
 ];
 
 const CourseRoadmap = () => {
   return (
-    <Box sx={{ py: { xs: 4, md: 8 }, backgroundColor: "#fff" }}>
-      <Container maxWidth="lg">
+    <Box
+      sx={{
+        py: { xs: 4, md: 8 },
+        position: "relative",
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${Background1})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background:
+            "linear-gradient(45deg, rgba(14, 33, 72, 0.9) 0%, rgba(0, 0, 0, 0.8) 100%)",
+          zIndex: 1,
+        },
+      }}
+    >
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <Typography
           variant="h3"
-          component="h2"
           align="center"
           sx={{
             mb: { xs: 4, md: 6 },
-            fontSize: { xs: "1.75rem", sm: "2.25rem", md: "2.5rem" },
+            fontSize: { xs: "1.75rem", sm: "2.25rem", md: "3rem" },
             fontWeight: "bold",
-            color: "#0E2148",
+            color: "#FFB800",
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
           }}
         >
           Lộ trình khóa học
         </Typography>
 
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
-            <Timeline position="right">
+        <Grid container justifyContent="center">
+          <Grid item xs={12} md={8}>
+            <Timeline
+              position="alternate"
+              sx={{
+                [`@media (max-width: 768px)`]: {
+                  padding: 0,
+                  margin: 0,
+                },
+              }}
+            >
               {roadmapData.map((item, index) => (
-                <TimelineItem key={index}>
+                <TimelineItem
+                  key={index}
+                  sx={{
+                    [`@media (max-width: 768px)`]: {
+                      minHeight: "auto",
+                    },
+                  }}
+                >
                   <TimelineSeparator>
-                    <TimelineDot sx={{ bgcolor: "#FFB800" }} />
+                    <TimelineDot
+                      sx={{
+                        bgcolor: "#FFB800",
+                        width: { xs: 12, md: 16 },
+                        height: { xs: 12, md: 16 },
+                        boxShadow: "0 0 10px rgba(255, 184, 0, 0.5)",
+                      }}
+                    />
                     {index < roadmapData.length - 1 && (
-                      <TimelineConnector sx={{ bgcolor: "#FFB800" }} />
+                      <TimelineConnector
+                        sx={{
+                          bgcolor: "#FFB800",
+                          opacity: 0.5,
+                        }}
+                      />
                     )}
                   </TimelineSeparator>
-                  <TimelineContent>
+                  <TimelineContent
+                    sx={{
+                      paddingLeft: { xs: 1, md: 2 },
+                      paddingRight: { xs: 0, md: 2 },
+                    }}
+                  >
                     <Paper
                       elevation={3}
                       sx={{
                         p: { xs: 2, md: 3 },
-                        mb: 2,
-                        transition: "transform 0.3s ease-in-out",
+                        mb: { xs: 1.5, md: 2 },
+                        transition: "all 0.3s ease-in-out",
+                        background: "rgba(255, 255, 255, 0.95)",
+                        backdropFilter: "blur(10px)",
                         "&:hover": {
-                          transform: "translateX(8px)",
-                          boxShadow: 4,
+                          transform: {
+                            xs: "translateX(4px)",
+                            md: "translateX(8px)",
+                          },
+                          boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
+                          background: "#fff",
                         },
+                        borderRadius: { xs: 2, md: 3 },
                       }}
                     >
                       <Typography
@@ -79,8 +153,9 @@ const CourseRoadmap = () => {
                         sx={{
                           fontWeight: "bold",
                           color: "#0E2148",
-                          fontSize: { xs: "1.1rem", md: "1.25rem" },
-                          mb: 1,
+                          fontSize: { xs: "1rem", md: "1.25rem" },
+                          mb: { xs: 1, md: 1.5 },
+                          lineHeight: { xs: 1.3, md: 1.4 },
                         }}
                       >
                         {item.title}
@@ -90,92 +165,17 @@ const CourseRoadmap = () => {
                         color="text.secondary"
                         sx={{
                           fontSize: { xs: "0.875rem", md: "1rem" },
-                          mb: 1,
+                          mb: { xs: 0.5, md: 1 },
+                          lineHeight: { xs: 1.4, md: 1.5 },
                         }}
                       >
                         {item.description}
-                      </Typography>
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          color: "#FFB800",
-                          fontWeight: "bold",
-                          display: "block",
-                        }}
-                      >
-                        Thời lượng: {item.duration}
                       </Typography>
                     </Paper>
                   </TimelineContent>
                 </TimelineItem>
               ))}
             </Timeline>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Box
-              sx={{
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                p: { xs: 2, md: 4 },
-              }}
-            >
-              <Typography
-                variant="h5"
-                sx={{
-                  fontWeight: "bold",
-                  color: "#0E2148",
-                  mb: 3,
-                  fontSize: { xs: "1.25rem", md: "1.5rem" },
-                }}
-              >
-                Tại sao nên chọn lộ trình này?
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "text.secondary",
-                  mb: 2,
-                  fontSize: { xs: "0.875rem", md: "1rem" },
-                  lineHeight: 1.6,
-                }}
-              >
-                • Lộ trình được thiết kế bởi các chuyên gia AI hàng đầu
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "text.secondary",
-                  mb: 2,
-                  fontSize: { xs: "0.875rem", md: "1rem" },
-                  lineHeight: 1.6,
-                }}
-              >
-                • Nội dung cập nhật liên tục theo xu hướng mới nhất
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "text.secondary",
-                  mb: 2,
-                  fontSize: { xs: "0.875rem", md: "1rem" },
-                  lineHeight: 1.6,
-                }}
-              >
-                • Thực hành trực tiếp với các dự án thực tế
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "text.secondary",
-                  fontSize: { xs: "0.875rem", md: "1rem" },
-                  lineHeight: 1.6,
-                }}
-              >
-                • Hỗ trợ 1-1 từ giảng viên trong suốt khóa học
-              </Typography>
-            </Box>
           </Grid>
         </Grid>
       </Container>

@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
-  Card,
-  CardContent,
   Typography,
   TextField,
   Button,
   MenuItem,
   Stack,
+  useTheme,
+  keyframes, // Keep useTheme if you plan to use it for global theme access later
 } from "@mui/material";
-
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { SendMail } from "../services/sendMail";
 import { LoadingPopup } from "./popup/LoadingPopup";
-import { PositionData } from "../data/positionData";
-const jobOptions = PositionData;
+import { PositionData } from "../data/positionData"; // Keep this for the 'position' field
+import CountdownTimer from "./countdownTimer";
+const jobOptions = PositionData; // Keep this for the 'position' field
 
 const Form = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,23 +22,23 @@ const Form = () => {
     name: "",
     phone: "",
     email: "",
-    position: "",
+    position: "", // Retained from your original code
   });
 
   const [error, setError] = useState({
     name: "",
     email: "",
     phone: "",
-    position: "",
+    position: "", // Retained from your original code
   });
+
+  const theme = useTheme(); // You can still use the theme if needed for other styles
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Cập nhật giá trị
     setData((prev) => ({ ...prev, [name]: value }));
 
-    // Validation theo từng field
     switch (name) {
       case "name":
         setError((prev) => ({
@@ -59,7 +60,7 @@ const Form = () => {
             : "",
         }));
         break;
-      case "position":
+      case "position": // Retained from your original code
         setError((prev) => ({
           ...prev,
           position: jobOptions.includes(value) ? "" : "Vị trí không hợp lệ",
@@ -74,7 +75,7 @@ const Form = () => {
     e.preventDefault();
 
     const hasError = Object.values(error).some((err) => err !== "");
-    const hasEmptyField = Object.values(data).some((val) => val === "");
+    const hasEmptyField = Object.values(data).some((val) => val === ""); // Check all retained fields
 
     if (hasError || hasEmptyField) {
       alert("Vui lòng điền đầy đủ và đúng thông tin.");
@@ -90,29 +91,224 @@ const Form = () => {
       alert(`${result?.message} ${result?.error}`);
     }
   };
+
   function clearData() {
-    (data.name = ""),
-      (data.phone = ""),
-      (data.email = ""),
-      (data.position = "");
+    setData({
+      name: "",
+      phone: "",
+      email: "",
+      position: "", // Retained from your original code
+    });
   }
+
+  // Khai báo animation shake
+  const shake = keyframes`
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+`;
+  const pulseAnimation = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+`;
   return (
     <>
       <LoadingPopup open={isLoading} />
-      <Box display="flex" justifyContent="center" py={4}>
-        <Card
-          sx={{ maxWidth: 500, width: "100%", boxShadow: 3, borderRadius: 2 }}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+          backgroundColor: "#D9D1C5",
+          px: { xs: 2, md: 5 },
+        }}
+      >
+        <Box
+          mt={4}
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            width: { xs: "80%", md: "100%" },
+            maxWidth: 1100,
+            width: "100%",
+            mx: "auto",
+            borderRadius: "10px",
+            overflow: "hidden",
+          }}
         >
-          <CardContent>
-            <Typography variant="h5" fontWeight={600} mb={2} textAlign="center">
-              Đăng ký ngay hôm nay <br />
-              Nhận ưu đãi 50% hôm nay!
-            </Typography>
+          <Box
+            sx={{
+              flex: 2,
 
-            <form onSubmit={handleSubmit}>
-              <Stack spacing={2}>
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              minHeight: { xs: "50vh", md: "auto" },
+            }}
+          >
+            <Box
+              sx={{
+                animation: `${shake} 0.9s ease-in-out infinite`,
+                display: "inline-block",
+              }}
+            >
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: 700,
+                  color: "#5C4033",
+                  mb: 2,
+                }}
+                fontSize={{ xs: "1.2rem", md: "1.6rem" }}
+              >
+                VẬY CÒN CHẦN CHỪ GÌ NỮA?
+              </Typography>
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: 700,
+                  color: "#5C4033",
+                  mb: 2,
+                }}
+                fontSize={{ xs: "1.9rem", md: "2.5rem" }}
+              >
+                NHẬN NGAY ƯU ĐÃI NHÉ
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                backgroundColor: "rgba(236, 196, 118, 1)",
+                marginLeft: "10px",
+                border: "1px solid #000",
+                mb: 3,
+                display: "flex",
+                flexDirection: { xs: "column", md: "row" },
+                borderRadius: { xs: "10px", md: "10px 0px 0px 10px" },
+                width: { md: "99%", xs: "100%" },
+              }}
+            >
+              {/* LEFT */}
+              <Box
+                sx={{
+                  width: { xs: "100%", md: "40%" },
+                  minWidth: 250,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyItems: "flex-start",
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  fontWeight={600}
+                  fontSize={{ xs: "2.3rem", md: "4.2rem" }}
+                  textTransform="uppercase"
+                  mt={2}
+                  color="red"
+                >
+                  FLASH SALE
+                </Typography>
+                <Typography mt={1} fontSize={16} color="red" fontWeight={600}>
+                  CHỈ 10 SLOT NHANH NHẤT
+                </Typography>
+                <Typography mt={1} fontWeight={600}>
+                  Khuyến mãi sắp kết thúc
+                </Typography>
+                <Box mt={1}>
+                  <CountdownTimer targetDate="2025-06-10T23:59:59" />
+                </Box>
+              </Box>
+
+              {/* RIGHT */}
+              <Box
+                sx={{
+                  width: { xs: "100%", md: "70%" },
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  color: "white",
+                }}
+              >
+                <Typography
+                  fontWeight={700}
+                  fontSize={{ xs: "1rem", md: "2rem" }}
+                  textTransform="uppercase"
+                >
+                  Giá niêm yết
+                </Typography>
+                <Typography
+                  fontWeight={700}
+                  fontSize={{ xs: "2rem", md: "3rem" }}
+                  textTransform="uppercase"
+                  sx={{ textDecoration: "line-through" }}
+                >
+                  4.600.000 VNĐ
+                </Typography>
+                <Typography
+                  color="red"
+                  fontWeight="bold"
+                  fontSize={{ xs: "1rem", md: "2rem" }}
+                >
+                  chỉ còn
+                </Typography>
+                <Typography
+                  p={2}
+                  bgcolor="red"
+                  borderRadius="30px"
+                  width="80%"
+                  margin="0 auto"
+                  fontWeight="bold"
+                  fontSize={{ xs: "1rem", md: "2.5rem" }}
+                  sx={{
+                    animation: `${pulseAnimation} 1.5s infinite ease-in-out`,
+                    textAlign: "center",
+                    color: "white",
+                    mt: 1,
+                    mb: 2,
+                  }}
+                >
+                  3.600.000 VND
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+
+          {/* Right Section - Form */}
+          <Box
+            sx={{
+              flex: 1,
+              backgroundColor: "#B09680",
+              p: { xs: 3, sm: 5 },
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+            width={{ sx: "10%" }}
+          >
+            <Typography
+              variant="h4"
+              sx={{
+                fontWeight: 700,
+                color: "#FFFFFF",
+                mb: 3,
+                textAlign: "center",
+              }}
+              textTransform="uppercase"
+            >
+              Tham gia ngay
+            </Typography>
+            <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+              <Stack spacing={2.5}>
+                {/* Họ và tên */}
                 <TextField
-                  label="Họ tên"
+                  label="Họ và tên"
                   name="name"
                   required
                   fullWidth
@@ -120,18 +316,14 @@ const Form = () => {
                   onChange={handleChange}
                   error={!!error.name}
                   helperText={error.name}
+                  InputLabelProps={{
+                    style: { color: "#5C4033" }, // Label color
+                  }}
+                  InputProps={{
+                    style: { backgroundColor: "#FFFFFF", borderRadius: "5px" }, // Input background
+                  }}
                 />
-                <TextField
-                  label="Email"
-                  name="email"
-                  type="email"
-                  required
-                  fullWidth
-                  value={data.email}
-                  onChange={handleChange}
-                  error={!!error.email}
-                  helperText={error.email}
-                />
+                {/* Số điện thoại */}
                 <TextField
                   label="Số điện thoại"
                   name="phone"
@@ -142,10 +334,35 @@ const Form = () => {
                   onChange={handleChange}
                   error={!!error.phone}
                   helperText={error.phone}
+                  InputLabelProps={{
+                    style: { color: "#5C4033" },
+                  }}
+                  InputProps={{
+                    style: { backgroundColor: "#FFFFFF", borderRadius: "5px" },
+                  }}
                 />
+                {/* Email */}
+                <TextField
+                  label="Email"
+                  name="email"
+                  type="email"
+                  required
+                  fullWidth
+                  value={data.email}
+                  onChange={handleChange}
+                  error={!!error.email}
+                  helperText={error.email}
+                  InputLabelProps={{
+                    style: { color: "#5C4033" },
+                  }}
+                  InputProps={{
+                    style: { backgroundColor: "#FFFFFF", borderRadius: "5px" },
+                  }}
+                />
+                {/* Chọn vị trí công việc (original field) */}
                 <TextField
                   select
-                  label="Vị trí công việc"
+                  label="Chọn vị trí công việc"
                   name="position"
                   required
                   fullWidth
@@ -153,6 +370,12 @@ const Form = () => {
                   onChange={handleChange}
                   error={!!error.position}
                   helperText={error.position}
+                  InputLabelProps={{
+                    style: { color: "#5C4033" },
+                  }}
+                  InputProps={{
+                    style: { backgroundColor: "#FFFFFF", borderRadius: "5px" },
+                  }}
                 >
                   {jobOptions.map((option) => (
                     <MenuItem key={option} value={option}>
@@ -160,19 +383,34 @@ const Form = () => {
                     </MenuItem>
                   ))}
                 </TextField>
-
-                <Button
-                  type="submit"
-                  variant="contained"
-                  size="large"
-                  sx={{ bgcolor: "#1976d2", color: "#fff", fontWeight: "bold" }}
-                >
-                  Đăng ký ngay
-                </Button>
               </Stack>
+              <Button
+                type="submit"
+                variant="contained"
+                fullWidth
+                endIcon={<CheckCircleOutlineIcon />}
+                sx={{
+                  mt: 4,
+                  py: 1.5,
+                  fontSize: "1.1rem",
+                  fontWeight: "bold",
+                  backgroundColor: "#5C4033", // Dark brown button color
+                  color: "#FFFFFF",
+                  "&:hover": {
+                    backgroundColor: "#4A352A", // Darker brown on hover
+                  },
+                  borderRadius: "5px",
+
+                  animation: `${pulseAnimation} 1.5s infinite ease-in-out`,
+                  textAlign: "center",
+                  color: "white", // Cho dễ nhìn hơn trên nền đỏ
+                }}
+              >
+                Đăng ký ngay
+              </Button>
             </form>
-          </CardContent>
-        </Card>
+          </Box>
+        </Box>
       </Box>
     </>
   );
