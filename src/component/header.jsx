@@ -94,7 +94,8 @@ const Header = () => {
       <Container maxWidth={false} sx={{ px: { xs: 2, sm: 4, md: 1 } }}>
         <Grid
           container
-          spacing={10}
+          display={"flex"}
+          justifyContent={"space-between"}
           sx={{
             margin: 0,
             padding: { xs: 1, sm: 2 },
@@ -130,6 +131,7 @@ const Header = () => {
           >
             <Box
               component={"img"}
+              ml={2}
               src={Logo}
               sx={{
                 width: { xs: 60, sm: 80 },
@@ -151,10 +153,11 @@ const Header = () => {
             >
               {pages.map((page) => (
                 <Button
+                  justifyContent="center"
                   key={page.name}
                   onClick={() => scrollToSection(page.id)}
                   sx={{
-                    fontSize: { sm: "0.875rem", md: "0.9375rem" },
+                    fontSize: { sm: "1rem", md: "1.4rem" },
                     fontWeight: "bold",
                     color: page.name === "Đăng ký" ? "#FFB800" : "#0E2148",
                     cursor: "pointer",

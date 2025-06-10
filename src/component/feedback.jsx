@@ -27,21 +27,39 @@ const Feedback = () => {
         backgroundRepeat: "no-repeat, no-repeat, no-repeat, no-repeat",
         backgroundPosition: "center, center, center, center",
         backgroundBlendMode: "screen, normal, screen, normal",
+        backgroundAttachment: "fixed",
+        position: "relative",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          zIndex: 1,
+        },
       }}
     >
-      <Box maxWidth="1200px" mx="auto" mt={0}>
+      <Box maxWidth="1200px" mx="auto" mt={0} position="relative" zIndex={2}>
         <Typography
           textAlign="center"
-          variant="h4"
+          variant="h3"
           fontWeight={600}
           textTransform="uppercase"
           color="white"
-          pb={2}
+          p={5}
         >
           🌟 Phản hồi học viên sau khoá học AI 🌟
         </Typography>
 
-        <Box display="flex" justifyContent="center" flexWrap="wrap" gap={1}>
+        <Box
+          pb={5}
+          display="flex"
+          justifyContent="center"
+          flexWrap="wrap"
+          gap={3}
+        >
           {UserData.map((item, id) => (
             <Box
               key={id}
@@ -55,6 +73,9 @@ const Feedback = () => {
                 borderRadius: 4,
                 bgcolor: "#fff",
                 boxShadow: 2,
+                position: "relative",
+                minHeight: "400px",
+                pb: "90px",
               }}
             >
               <img
@@ -75,12 +96,14 @@ const Feedback = () => {
                 sx={{
                   margin: 2,
                   display: "flex",
-
-                  flexDirection: { xs: "column", md: "row" },
+                  flexDirection: { xs: "column", md: "column" },
                   alignItems: "center",
                   justifyContent: "center",
                   textAlign: "center",
-                  //   gap: "4px",
+                  position: "absolute",
+                  bottom: "8px",
+                  left: 0,
+                  right: 0,
                 }}
               >
                 <Typography

@@ -48,7 +48,6 @@ const HeroSection = () => {
 
       {/* Content Overlay */}
       <Container
-        maxWidth="100%"
         sx={{
           position: "relative",
           height: "100%",
@@ -63,10 +62,10 @@ const HeroSection = () => {
       >
         <Box
           sx={{
-            maxWidth: "900px",
+            maxWidth: "100%",
             width: "100%",
             textAlign: "center",
-            px: { xs: 2, sm: 3, md: 1 },
+            px: { xs: 2, sm: 3, md: 3 },
           }}
         >
           {title.map((item) => (
@@ -120,7 +119,7 @@ const HeroSection = () => {
             variant="contained"
             disableElevation
           >
-            Học thử miễn phí
+            Đăng ký ngay
           </Button>
         </Box>
       </Container>

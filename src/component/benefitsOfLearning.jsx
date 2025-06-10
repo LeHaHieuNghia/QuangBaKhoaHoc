@@ -45,7 +45,6 @@ const Benefit = () => {
       <Container maxWidth="lg">
         <Typography
           variant="h3"
-          component="h2"
           align="center"
           sx={{
             mb: { xs: 4, md: 6 },
@@ -87,6 +86,7 @@ const Benefit = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     height: "100%",
+                    width: 800,
                   }}
                 >
                   <Box
