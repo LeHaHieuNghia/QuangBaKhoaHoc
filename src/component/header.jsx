@@ -20,31 +20,45 @@ const Header = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setMobileOpen(false);
+    }
+  };
+
   const pages = [
-    "Giới thiệu",
-    "Nội dung học",
-    "Giảng viên",
-    "Chứng chỉ",
-    "Câu hỏi thường gặp",
-    "Đăng ký",
+    { name: "Giới thiệu", id: "intro" },
+    { name: "Nội dung học", id: "content" },
+    { name: "Giảng viên", id: "instructor" },
+    { name: "Chứng chỉ", id: "certificate" },
+    { name: "Câu hỏi thường gặp", id: "faq" },
+    { name: "Đăng ký", id: "register" },
   ];
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <List>
         {pages.map((page) => (
-          <ListItem key={page} sx={{ justifyContent: "center" }}>
+          <ListItem key={page.name} sx={{ justifyContent: "center" }}>
             <Button
+              onClick={() => scrollToSection(page.id)}
               sx={{
                 fontSize: { xs: "1rem", sm: "0.9375rem" },
                 fontWeight: "bold",
-                color: page === "Đăng ký" ? "#FFB800" : "#0E2148",
+                color: page.name === "Đăng ký" ? "#FFB800" : "#0E2148",
                 cursor: "pointer",
                 width: "100%",
                 py: 1.5,
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 184, 0, 0.1)",
+                  transform: "translateY(-2px)",
+                },
               }}
             >
-              {page}
+              {page.name}
             </Button>
           </ListItem>
         ))}
@@ -53,10 +67,23 @@ const Header = () => {
   );
 
   return (
-    <Box sx={{ backgroundColor: "white", width: "100%" }}>
-      <Container maxWidth={false} sx={{ px: { xs: 2, sm: 4, md: 6 } }}>
+    <Box
+      sx={{
+        backgroundColor: "white",
+        width: "100%",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 1000,
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+        transition: "all 0.3s ease",
+        background: "transparent",
+      }}
+    >
+      <Container maxWidth={false} sx={{ px: { xs: 2, sm: 4, md: 1 } }}>
         <Grid
           container
+          spacing={10}
           sx={{
             margin: 0,
             padding: { xs: 1, sm: 2 },
@@ -74,7 +101,7 @@ const Header = () => {
               display: { sm: "none" },
               position: "absolute",
               right: 16,
-              top: "7%",
+              top: "40px",
               transform: "translateY(-50%)",
               zIndex: 1000,
             }}
@@ -104,7 +131,7 @@ const Header = () => {
           </Grid>
 
           {/* CTA highlight */}
-          <Grid
+          {/* <Grid
             item
             xs={12}
             sm={5}
@@ -127,7 +154,7 @@ const Header = () => {
             >
               Đăng ký học ngay – Chỉ còn 3,599,000đ!
             </Typography>
-          </Grid>
+          </Grid> */}
 
           {/* Desktop menu */}
           <Grid item xs={6} sm={5}>
@@ -142,21 +169,24 @@ const Header = () => {
             >
               {pages.map((page) => (
                 <Button
-                  key={page}
+                  key={page.name}
+                  onClick={() => scrollToSection(page.id)}
                   sx={{
                     fontSize: { sm: "0.875rem", md: "0.9375rem" },
                     fontWeight: "bold",
-                    color: page === "Đăng ký" ? "#FFB800" : "#0E2148",
+                    color: page.name === "Đăng ký" ? "#FFB800" : "#0E2148",
                     cursor: "pointer",
                     px: { sm: 1, md: 2 },
                     whiteSpace: "nowrap",
+                    transition: "all 0.3s ease",
                     "&:hover": {
                       backgroundColor: "rgba(255, 184, 0, 0.1)",
                       borderRadius: "4px",
+                      transform: "translateY(-2px)",
                     },
                   }}
                 >
-                  {page}
+                  {page.name}
                 </Button>
               ))}
             </Box>
