@@ -100,7 +100,7 @@ const Feedback = () => {
                 sx={{
                   margin: 2,
                   display: "flex",
-                  flexDirection: { xs: "column", md: "row" },
+                  flexDirection: { xs: "column", md: "column" },
                   alignItems: "center",
                   justifyContent: "center",
                   textAlign: "center",
