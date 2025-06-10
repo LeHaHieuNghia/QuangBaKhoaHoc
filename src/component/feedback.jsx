@@ -14,9 +14,10 @@ import Background1 from "../assets/Background1.jpg";
 const Feedback = () => {
   return (
     <Box
-      p={4}
+      p={{ xs: 2, md: 4 }}
       sx={{
-        width: "100%",
+        overflowX: "hidden",
+        //width: "100%",
         backgroundImage: `
       linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 100%),
       url(${hero_bg}),
@@ -48,7 +49,8 @@ const Feedback = () => {
           fontWeight={600}
           textTransform="uppercase"
           color="white"
-          p={5}
+          pb={2}
+          fontSize={{ xs: "1.7rem", md: "2.125rem" }}
         >
           🌟 Phản hồi học viên sau khoá học AI 🌟
         </Typography>
@@ -78,17 +80,19 @@ const Feedback = () => {
                 pb: "90px",
               }}
             >
-              <img
-                src={item.img}
-                alt={item.name}
-                width="150px"
-                height="150px"
-                style={{
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  marginBottom: "1rem",
-                }}
-              />
+              <Box mt={2}>
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  width="150px"
+                  height="150px"
+                  style={{
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    marginBottom: "1rem",
+                  }}
+                />
+              </Box>
               <Typography variant="body1" m={2}>
                 {item.description}
               </Typography>
@@ -96,7 +100,7 @@ const Feedback = () => {
                 sx={{
                   margin: 2,
                   display: "flex",
-                  flexDirection: { xs: "column", md: "column" },
+                  flexDirection: { xs: "column", md: "row" },
                   alignItems: "center",
                   justifyContent: "center",
                   textAlign: "center",
@@ -111,7 +115,7 @@ const Feedback = () => {
                   component="span"
                   fontWeight={700}
                 >
-                  {item.name}
+                  {item.name} &nbsp;
                 </Typography>
                 <Typography variant="subtitle1" component="span">
                   {item.position}

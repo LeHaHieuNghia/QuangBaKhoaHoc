@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -6,13 +6,14 @@ import {
   Button,
   MenuItem,
   Stack,
-  useTheme, // Keep useTheme if you plan to use it for global theme access later
+  useTheme,
+  keyframes, // Keep useTheme if you plan to use it for global theme access later
 } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { SendMail } from "../services/sendMail";
 import { LoadingPopup } from "./popup/LoadingPopup";
 import { PositionData } from "../data/positionData"; // Keep this for the 'position' field
-
+import CountdownTimer from "./countdownTimer";
 const jobOptions = PositionData; // Keep this for the 'position' field
 
 const Form = () => {
@@ -100,6 +101,20 @@ const Form = () => {
     });
   }
 
+  // Khai báo animation shake
+  const shake = keyframes`
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+`;
+  const pulseAnimation = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+`;
   return (
     <>
       <LoadingPopup open={isLoading} />
@@ -109,234 +124,185 @@ const Form = () => {
           justifyContent: "center",
           alignItems: "center",
           minHeight: "100vh",
-          p: 2,
-          boxSizing: "border-box",
-          backgroundColor: "#D9D1C5", // Background color from image
+          backgroundColor: "#D9D1C5",
+          px: { xs: 2, md: 5 },
         }}
       >
         <Box
+          mt={4}
           sx={{
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
-            maxWidth: 1000,
+            width: { xs: "80%", md: "100%" },
+            maxWidth: 1100,
             width: "100%",
+            mx: "auto",
             borderRadius: "10px",
             overflow: "hidden",
-            boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)",
           }}
         >
-          {/* Left Section - Flash Sale */}
           <Box
             sx={{
-              flex: 1,
-              backgroundColor: "#EBD09C", // Background color from image
-              p: { xs: 3, sm: 5 },
+              flex: 2,
+
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
               textAlign: "center",
+              minHeight: { xs: "50vh", md: "auto" },
             }}
           >
-            <Typography
-              variant="h5"
-              sx={{
-                fontFamily: "serif", // Closest font-family from image
-                fontWeight: 700,
-                color: "#5C4033", // Text color from image
-                mb: 2,
-              }}
-            >
-              VẬY CÒN CHẦN CHỪ GÌ NỮA?
-            </Typography>
-            <Typography
-              variant="h4"
-              sx={{
-                fontFamily: "serif", // Closest font-family from image
-                fontWeight: 700,
-                color: "#5C4033", // Text color from image
-                mb: 4,
-              }}
-            >
-              NHẬN NGAY ƯU ĐÃI NHÉ ANH CHỊ
-            </Typography>
             <Box
               sx={{
-                backgroundColor: "#E67F6A", // Orange-red color from image
-                width: "100%",
-                p: { xs: 2, sm: 3 },
-                borderRadius: "5px",
-                mb: 3,
+                animation: `${shake} 0.9s ease-in-out infinite`,
+                display: "inline-block",
               }}
             >
               <Typography
-                variant="h2"
+                variant="h5"
                 sx={{
-                  color: "#FFFFFF",
-                  fontWeight: "bold",
-                  fontSize: { xs: "3rem", sm: "4rem" },
-                  textShadow: "2px 2px 4px rgba(0,0,0,0.3)",
+                  fontWeight: 700,
+                  color: "#5C4033",
+                  mb: 2,
                 }}
+                fontSize={{ xs: "1.2rem", md: "1.6rem" }}
               >
-                FLASH SALE
+                VẬY CÒN CHẦN CHỪ GÌ NỮA?
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 sx={{
-                  color: "#FFFFFF",
-                  fontWeight: "bold",
-                  mt: 1,
+                  fontWeight: 700,
+                  color: "#5C4033",
+                  mb: 2,
                 }}
+                fontSize={{ xs: "1.9rem", md: "2.5rem" }}
               >
-                CHỈ 10 SLOT NHANH NHẤT
+                NHẬN NGAY ƯU ĐÃI NHÉ
               </Typography>
             </Box>
             <Box
               sx={{
-                display: "flex",
-                justifyContent: "space-around",
-                width: "100%",
+                backgroundColor: "rgba(236, 196, 118, 1)",
+                marginLeft: "10px",
+                border: "1px solid #000",
                 mb: 3,
-                alignItems: "flex-end",
+                display: "flex",
+                flexDirection: { xs: "column", md: "row" },
+                borderRadius: { xs: "10px", md: "10px 0px 0px 10px" },
+                width: { md: "99%", xs: "100%" },
               }}
             >
-              <Box sx={{ textAlign: "center" }}>
+              {/* LEFT */}
+              <Box
+                sx={{
+                  width: { xs: "100%", md: "40%" },
+                  minWidth: 250,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyItems: "flex-start",
+                }}
+              >
                 <Typography
-                  variant="body1"
-                  sx={{ color: "#5C4033", fontWeight: "bold" }}
+                  variant="h4"
+                  fontWeight={600}
+                  fontSize={{ xs: "2.3rem", md: "4.2rem" }}
+                  textTransform="uppercase"
+                  mt={2}
+                  color="red"
+                >
+                  FLASH SALE
+                </Typography>
+                <Typography mt={1} fontSize={16} color="red" fontWeight={600}>
+                  CHỈ 10 SLOT NHANH NHẤT
+                </Typography>
+                <Typography mt={1} fontWeight={600}>
+                  Khuyến mãi sắp kết thúc
+                </Typography>
+                <Box mt={1}>
+                  <CountdownTimer targetDate="2025-06-10T23:59:59" />
+                </Box>
+              </Box>
+
+              {/* RIGHT */}
+              <Box
+                sx={{
+                  width: { xs: "100%", md: "70%" },
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  color: "white",
+                }}
+              >
+                <Typography
+                  fontWeight={700}
+                  fontSize={{ xs: "1rem", md: "2rem" }}
+                  textTransform="uppercase"
                 >
                   Giá niêm yết
                 </Typography>
                 <Typography
-                  variant="h5"
-                  sx={{
-                    color: "#5C4033",
-                    fontWeight: "bold",
-                    textDecoration: "line-through",
-                    fontSize: { xs: "1.5rem", sm: "2rem" },
-                  }}
+                  fontWeight={700}
+                  fontSize={{ xs: "2rem", md: "3rem" }}
+                  textTransform="uppercase"
+                  sx={{ textDecoration: "line-through" }}
                 >
-                  499.000 VNĐ
+                  4.600.000 VNĐ
                 </Typography>
-              </Box>
-              <Box sx={{ textAlign: "center" }}>
                 <Typography
-                  variant="body1"
-                  sx={{ color: "#5C4033", fontWeight: "bold" }}
+                  color="red"
+                  fontWeight="bold"
+                  fontSize={{ xs: "1rem", md: "2rem" }}
                 >
                   chỉ còn
                 </Typography>
                 <Typography
-                  variant="h4"
+                  p={2}
+                  bgcolor="red"
+                  borderRadius="30px"
+                  width="80%"
+                  margin="0 auto"
+                  fontWeight="bold"
+                  fontSize={{ xs: "1rem", md: "2.5rem" }}
                   sx={{
-                    color: "#EE1B24", // Red color from image
-                    fontWeight: "bold",
-                    fontSize: { xs: "2rem", sm: "3rem" },
+                    animation: `${pulseAnimation} 1.5s infinite ease-in-out`,
+                    textAlign: "center",
+                    color: "white",
+                    mt: 1,
+                    mb: 2,
                   }}
                 >
-                  149.000 VNĐ
+                  3.600.000 VND
                 </Typography>
               </Box>
             </Box>
-            <Typography
-              variant="body1"
-              sx={{ color: "#5C4033", fontWeight: "bold", mb: 2 }}
-            >
-              Khuyến mãi sắp kết thúc
-            </Typography>
-            <Stack
-              direction="row"
-              spacing={{ xs: 1, sm: 2 }}
-              justifyContent="center"
-              sx={{ width: "100%" }}
-            >
-              {/* These are static based on the image; for a real timer, you'd use state */}
-              <Box sx={{ textAlign: "center" }}>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    color: "#5C4033",
-                    fontWeight: "bold",
-                    fontSize: { xs: "2rem", sm: "2.5rem" },
-                  }}
-                >
-                  00
-                </Typography>
-                <Typography variant="caption" sx={{ color: "#5C4033" }}>
-                  Ngày
-                </Typography>
-              </Box>
-              <Box sx={{ textAlign: "center" }}>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    color: "#5C4033",
-                    fontWeight: "bold",
-                    fontSize: { xs: "2rem", sm: "2.5rem" },
-                  }}
-                >
-                  10
-                </Typography>
-                <Typography variant="caption" sx={{ color: "#5C4033" }}>
-                  Giờ
-                </Typography>
-              </Box>
-              <Box sx={{ textAlign: "center" }}>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    color: "#5C4033",
-                    fontWeight: "bold",
-                    fontSize: { xs: "2rem", sm: "2.5rem" },
-                  }}
-                >
-                  15
-                </Typography>
-                <Typography variant="caption" sx={{ color: "#5C4033" }}>
-                  Phút
-                </Typography>
-              </Box>
-              <Box sx={{ textAlign: "center" }}>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    color: "#5C4033",
-                    fontWeight: "bold",
-                    fontSize: { xs: "2rem", sm: "2.5rem" },
-                  }}
-                >
-                  41
-                </Typography>
-                <Typography variant="caption" sx={{ color: "#5C4033" }}>
-                  Giây
-                </Typography>
-              </Box>
-            </Stack>
           </Box>
 
           {/* Right Section - Form */}
           <Box
             sx={{
               flex: 1,
-              backgroundColor: "#B09680", // Brownish background from image
+              backgroundColor: "#B09680",
               p: { xs: 3, sm: 5 },
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               alignItems: "center",
             }}
+            width={{ sx: "10%" }}
           >
             <Typography
-              variant="h5"
+              variant="h4"
               sx={{
-                fontFamily: "serif",
                 fontWeight: 700,
                 color: "#FFFFFF",
                 mb: 3,
                 textAlign: "center",
               }}
+              textTransform="uppercase"
             >
-              ĐĂNG KÝ MUA NGAY
+              Tham gia ngay
             </Typography>
             <form onSubmit={handleSubmit} style={{ width: "100%" }}>
               <Stack spacing={2.5}>
@@ -434,12 +400,15 @@ const Form = () => {
                     backgroundColor: "#4A352A", // Darker brown on hover
                   },
                   borderRadius: "5px",
+
+                  animation: `${pulseAnimation} 1.5s infinite ease-in-out`,
+                  textAlign: "center",
+                  color: "white", // Cho dễ nhìn hơn trên nền đỏ
                 }}
               >
                 Đăng ký ngay
               </Button>
             </form>
-            {/* Removed QR code and payment info section */}
           </Box>
         </Box>
       </Box>
