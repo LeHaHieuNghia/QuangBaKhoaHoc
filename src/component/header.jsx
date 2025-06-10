@@ -21,13 +21,60 @@ const Header = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  const [activeSection, setActiveSection] = useState("intro");
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      // Tính toán offset để tránh bị che bởi header fixed
+      const headerHeight = 80;
+      const elementPosition = element.offsetTop - headerHeight;
+
+      // Cuộn mượt đến vị trí
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth",
+      });
+
+      // Đóng mobile drawer nếu đang mở
       setMobileOpen(false);
+
+      // Cập nhật active section
+      setActiveSection(sectionId);
     }
   };
+
+  // Lắng nghe cuộn trang và cập nhật active section
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+
+      // Tìm section hiện tại đang xem
+      const sections = [
+        "intro",
+        "content",
+        "certificate",
+        "instructor",
+        "register",
+        "faq",
+      ];
+      const headerHeight = 80;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const element = document.getElementById(sections[i]);
+        if (element) {
+          const elementTop = element.offsetTop - headerHeight - 100;
+          if (window.scrollY >= elementTop) {
+            setActiveSection(sections[i]);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Lắng nghe cuộn trang
   useEffect(() => {
@@ -160,13 +207,19 @@ const Header = () => {
                   sx={{
                     fontSize: { sm: "1rem", md: "1.4rem" },
                     fontWeight: "bold",
-                    color: page.name === "Đăng ký" ? "#FFB800" : "#0E2148",
+                    color:
+                      page.name === "Đăng ký"
+                        ? "#FFB800"
+                        : isScrolled
+                        ? "#0E2148"
+                        : "white",
                     cursor: "pointer",
                     px: { sm: 1, md: 2 },
                     whiteSpace: "nowrap",
-                    transition: "all 0.3s ease",
                     "&:hover": {
-                      backgroundColor: "rgba(255, 184, 0, 0.1)",
+                      backgroundColor: isScrolled
+                        ? "rgba(22, 173, 203, 0.1)"
+                        : "rgba(255, 255, 255, 0.1)",
                       borderRadius: "4px",
                       transform: "translateY(-2px)",
                     },

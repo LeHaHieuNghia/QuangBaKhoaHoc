@@ -48,8 +48,8 @@ const Footer = () => {
               alt="SuriTechs Logo"
               sx={{
                 transform: "scale(1)",
+                color: "red",
                 height: "150px",
-                filter: "brightness(0) invert(1)",
               }}
             />
             <Typography
