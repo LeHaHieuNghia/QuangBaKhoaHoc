@@ -6,6 +6,7 @@ import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
+import Background1 from "../assets/Background1.jpg";
 
 const roadmapData = [
   {
@@ -38,30 +39,57 @@ const roadmapData = [
 
 const CourseRoadmap = () => {
   return (
-    <Box sx={{ py: { xs: 4, md: 8 }, backgroundColor: "#fff" }}>
-      <Container maxWidth="lg">
+    <Box
+      sx={{
+        py: { xs: 4, md: 8 },
+        position: "relative",
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${Background1})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background:
+            "linear-gradient(45deg, rgba(14, 33, 72, 0.9) 0%, rgba(0, 0, 0, 0.8) 100%)",
+          zIndex: 1,
+        },
+      }}
+    >
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <Typography
           variant="h3"
-          component="h2"
           align="center"
           sx={{
             mb: { xs: 4, md: 6 },
-            fontSize: { xs: "1.75rem", sm: "2.25rem", md: "2.5rem" },
+            fontSize: { xs: "1.75rem", sm: "2.25rem", md: "3rem" },
             fontWeight: "bold",
-            color: "#0E2148",
+            color: "#FFB800",
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
           }}
         >
           Lộ trình khóa học
         </Typography>
 
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
+        <Grid container justifyContent="center">
+          <Grid item xs={12} md={8}>
             <Timeline
-              position="right"
+              position="alternate"
               sx={{
-                // Trên mobile, đặt timeline về bên trái và giảm padding
                 [`@media (max-width: 768px)`]: {
-                  position: "left",
                   padding: 0,
                   margin: 0,
                 },
@@ -71,12 +99,8 @@ const CourseRoadmap = () => {
                 <TimelineItem
                   key={index}
                   sx={{
-                    // Trên mobile, giảm khoảng cách giữa các item
                     [`@media (max-width: 768px)`]: {
                       minHeight: "auto",
-                      "&::before": {
-                        display: "none", // Ẩn line connector trên mobile nếu cần
-                      },
                     },
                   }}
                 >
@@ -84,18 +108,22 @@ const CourseRoadmap = () => {
                     <TimelineDot
                       sx={{
                         bgcolor: "#FFB800",
-                        // Trên mobile, làm nhỏ dot lại
                         width: { xs: 12, md: 16 },
                         height: { xs: 12, md: 16 },
+                        boxShadow: "0 0 10px rgba(255, 184, 0, 0.5)",
                       }}
                     />
                     {index < roadmapData.length - 1 && (
-                      <TimelineConnector sx={{ bgcolor: "#FFB800" }} />
+                      <TimelineConnector
+                        sx={{
+                          bgcolor: "#FFB800",
+                          opacity: 0.5,
+                        }}
+                      />
                     )}
                   </TimelineSeparator>
                   <TimelineContent
                     sx={{
-                      // Trên mobile, giảm padding bên trái
                       paddingLeft: { xs: 1, md: 2 },
                       paddingRight: { xs: 0, md: 2 },
                     }}
@@ -103,18 +131,19 @@ const CourseRoadmap = () => {
                     <Paper
                       elevation={3}
                       sx={{
-                        // Sửa lại padding - giá trị 12 quá lớn cho mobile
                         p: { xs: 2, md: 3 },
                         mb: { xs: 1.5, md: 2 },
-                        transition: "transform 0.3s ease-in-out",
+                        transition: "all 0.3s ease-in-out",
+                        background: "rgba(255, 255, 255, 0.95)",
+                        backdropFilter: "blur(10px)",
                         "&:hover": {
                           transform: {
                             xs: "translateX(4px)",
                             md: "translateX(8px)",
                           },
-                          boxShadow: 4,
+                          boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
+                          background: "#fff",
                         },
-                        // Trên mobile, giảm border radius
                         borderRadius: { xs: 2, md: 3 },
                       }}
                     >
@@ -125,7 +154,6 @@ const CourseRoadmap = () => {
                           fontWeight: "bold",
                           color: "#0E2148",
                           fontSize: { xs: "1rem", md: "1.25rem" },
-                          // Sửa lại margin bottom - giá trị 6 quá lớn
                           mb: { xs: 1, md: 1.5 },
                           lineHeight: { xs: 1.3, md: 1.4 },
                         }}
@@ -142,17 +170,6 @@ const CourseRoadmap = () => {
                         }}
                       >
                         {item.description}
-                      </Typography>
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          color: "#FFB800",
-                          fontWeight: "bold",
-                          display: "block",
-                          fontSize: { xs: "0.75rem", md: "0.875rem" },
-                        }}
-                      >
-                        {/* Thời lượng: {item.duration} */}
                       </Typography>
                     </Paper>
                   </TimelineContent>
