@@ -6,7 +6,8 @@ import {
   Button,
   MenuItem,
   Stack,
-  useTheme, // Keep useTheme if you plan to use it for global theme access later
+  useTheme,
+  keyframes, // Keep useTheme if you plan to use it for global theme access later
 } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { SendMail } from "../services/sendMail";
@@ -100,6 +101,16 @@ const Form = () => {
     });
   }
 
+  // Khai báo animation shake
+  const shake = keyframes`
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+`;
+
   return (
     <>
       <LoadingPopup open={isLoading} />
@@ -122,14 +133,11 @@ const Form = () => {
             width: "100%",
             borderRadius: "10px",
             overflow: "hidden",
-            boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)",
           }}
         >
-          {/* Left Section - Flash Sale */}
           <Box
             sx={{
               flex: 1,
-              backgroundColor: "#EBD09C", // Background color from image
               p: { xs: 3, sm: 5 },
               display: "flex",
               flexDirection: "column",
@@ -138,180 +146,52 @@ const Form = () => {
               textAlign: "center",
             }}
           >
-            <Typography
-              variant="h5"
-              sx={{
-                fontFamily: "serif", // Closest font-family from image
-                fontWeight: 700,
-                color: "#5C4033", // Text color from image
-                mb: 2,
-              }}
-            >
-              VẬY CÒN CHẦN CHỪ GÌ NỮA?
-            </Typography>
-            <Typography
-              variant="h4"
-              sx={{
-                fontFamily: "serif", // Closest font-family from image
-                fontWeight: 700,
-                color: "#5C4033", // Text color from image
-                mb: 4,
-              }}
-            >
-              NHẬN NGAY ƯU ĐÃI NHÉ ANH CHỊ
-            </Typography>
             <Box
               sx={{
-                backgroundColor: "#E67F6A", // Orange-red color from image
+                animation: `${shake} 0.9s ease-in-out infinite`,
+                display: "inline-block",
+              }}
+            >
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: 700,
+                  color: "#5C4033",
+                  mb: 2,
+                }}
+                fontSize={{ xs: "1.2rem", md: "1.6rem" }}
+              >
+                VẬY CÒN CHẦN CHỪ GÌ NỮA?
+              </Typography>
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: 700,
+                  color: "#5C4033",
+                  mb: 4,
+                }}
+              >
+                NHẬN NGAY ƯU ĐÃI NHÉ
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                backgroundColor: "#FFB800",
                 width: "100%",
                 p: { xs: 2, sm: 3 },
                 borderRadius: "5px",
                 mb: 3,
-              }}
-            >
-              <Typography
-                variant="h2"
-                sx={{
-                  color: "#FFFFFF",
-                  fontWeight: "bold",
-                  fontSize: { xs: "3rem", sm: "4rem" },
-                  textShadow: "2px 2px 4px rgba(0,0,0,0.3)",
-                }}
-              >
-                FLASH SALE
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{
-                  color: "#FFFFFF",
-                  fontWeight: "bold",
-                  mt: 1,
-                }}
-              >
-                CHỈ 10 SLOT NHANH NHẤT
-              </Typography>
-            </Box>
-            <Box
-              sx={{
                 display: "flex",
-                justifyContent: "space-around",
-                width: "100%",
-                mb: 3,
-                alignItems: "flex-end",
+                flexDirection: "row",
               }}
             >
-              <Box sx={{ textAlign: "center" }}>
-                <Typography
-                  variant="body1"
-                  sx={{ color: "#5C4033", fontWeight: "bold" }}
-                >
-                  Giá niêm yết
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    color: "#5C4033",
-                    fontWeight: "bold",
-                    textDecoration: "line-through",
-                    fontSize: { xs: "1.5rem", sm: "2rem" },
-                  }}
-                >
-                  499.000 VNĐ
-                </Typography>
+              <Box backgroundColor="red" width="30%" height="100%">
+                ầ
               </Box>
-              <Box sx={{ textAlign: "center" }}>
-                <Typography
-                  variant="body1"
-                  sx={{ color: "#5C4033", fontWeight: "bold" }}
-                >
-                  chỉ còn
-                </Typography>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    color: "#EE1B24", // Red color from image
-                    fontWeight: "bold",
-                    fontSize: { xs: "2rem", sm: "3rem" },
-                  }}
-                >
-                  149.000 VNĐ
-                </Typography>
+              <Box backgroundColor="blue" width="70%" height="100%">
+                ádasd
               </Box>
             </Box>
-            <Typography
-              variant="body1"
-              sx={{ color: "#5C4033", fontWeight: "bold", mb: 2 }}
-            >
-              Khuyến mãi sắp kết thúc
-            </Typography>
-            <Stack
-              direction="row"
-              spacing={{ xs: 1, sm: 2 }}
-              justifyContent="center"
-              sx={{ width: "100%" }}
-            >
-              {/* These are static based on the image; for a real timer, you'd use state */}
-              <Box sx={{ textAlign: "center" }}>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    color: "#5C4033",
-                    fontWeight: "bold",
-                    fontSize: { xs: "2rem", sm: "2.5rem" },
-                  }}
-                >
-                  00
-                </Typography>
-                <Typography variant="caption" sx={{ color: "#5C4033" }}>
-                  Ngày
-                </Typography>
-              </Box>
-              <Box sx={{ textAlign: "center" }}>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    color: "#5C4033",
-                    fontWeight: "bold",
-                    fontSize: { xs: "2rem", sm: "2.5rem" },
-                  }}
-                >
-                  10
-                </Typography>
-                <Typography variant="caption" sx={{ color: "#5C4033" }}>
-                  Giờ
-                </Typography>
-              </Box>
-              <Box sx={{ textAlign: "center" }}>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    color: "#5C4033",
-                    fontWeight: "bold",
-                    fontSize: { xs: "2rem", sm: "2.5rem" },
-                  }}
-                >
-                  15
-                </Typography>
-                <Typography variant="caption" sx={{ color: "#5C4033" }}>
-                  Phút
-                </Typography>
-              </Box>
-              <Box sx={{ textAlign: "center" }}>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    color: "#5C4033",
-                    fontWeight: "bold",
-                    fontSize: { xs: "2rem", sm: "2.5rem" },
-                  }}
-                >
-                  41
-                </Typography>
-                <Typography variant="caption" sx={{ color: "#5C4033" }}>
-                  Giây
-                </Typography>
-              </Box>
-            </Stack>
           </Box>
 
           {/* Right Section - Form */}
@@ -439,7 +319,6 @@ const Form = () => {
                 Đăng ký ngay
               </Button>
             </form>
-            {/* Removed QR code and payment info section */}
           </Box>
         </Box>
       </Box>
