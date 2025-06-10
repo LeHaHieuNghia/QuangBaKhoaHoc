@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -8,13 +8,14 @@ import {
   List,
   ListItem,
   Container,
+  Grid,
 } from "@mui/material";
-import { Grid } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Logo from "../assets/logoSuri.png"; // Assuming you have a logo image
+import Logo from "../assets/logoSuri.png";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -27,6 +28,16 @@ const Header = () => {
       setMobileOpen(false);
     }
   };
+
+  // Lắng nghe cuộn trang
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const pages = [
     { name: "Giới thiệu", id: "intro" },
@@ -69,15 +80,15 @@ const Header = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "white",
         width: "100%",
         position: "fixed",
         top: 0,
         left: 0,
         zIndex: 1000,
-        boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-        transition: "all 0.3s ease",
-        background: "transparent",
+        boxShadow: isScrolled ? "0 2px 6px rgba(0,0,0,0.15)" : "none",
+        transition: "all 0.3s linear",
+        backgroundColor: isScrolled ? "white" : "transparent",
+        backdropFilter: isScrolled ? "blur(8px)" : "none",
       }}
     >
       <Container maxWidth={false} sx={{ px: { xs: 2, sm: 4, md: 1 } }}>
@@ -91,7 +102,6 @@ const Header = () => {
             alignItems: "center",
           }}
         >
-          {/* Mobile menu button */}
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -109,7 +119,6 @@ const Header = () => {
             <MenuIcon />
           </IconButton>
 
-          {/* Logo */}
           <Grid
             item
             xs={6}
@@ -130,33 +139,6 @@ const Header = () => {
             />
           </Grid>
 
-          {/* CTA highlight */}
-          {/* <Grid
-            item
-            xs={12}
-            sm={5}
-            sx={{
-              display: { xs: "none", sm: "flex" },
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              pl: { sm: 4, md: 6 },
-            }}
-          >
-            <Typography
-              color="#FFB800"
-              sx={{
-                fontSize: { sm: "0.875rem", md: "1.1875rem" },
-                fontWeight: "bold",
-                lineHeight: 1.2,
-                whiteSpace: "nowrap",
-              }}
-            >
-              Đăng ký học ngay – Chỉ còn 3,599,000đ!
-            </Typography>
-          </Grid> */}
-
-          {/* Desktop menu */}
           <Grid item xs={6} sm={5}>
             <Box
               sx={{
@@ -192,14 +174,13 @@ const Header = () => {
             </Box>
           </Grid>
 
-          {/* Mobile drawer */}
           <Drawer
             variant="temporary"
             anchor="right"
             open={mobileOpen}
             onClose={handleDrawerToggle}
             ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
+              keepMounted: true,
             }}
             sx={{
               display: { xs: "block", sm: "none" },
