@@ -53,6 +53,7 @@ const Faq = () => {
               }}
             >
               <Box
+                align="justify"
                 sx={{
                   width: "3rem",
                   height: "3rem",
@@ -74,6 +75,7 @@ const Faq = () => {
 
               <Typography
                 variant="subtitle1"
+                align="justify"
                 fontWeight={600}
                 sx={{ flexGrow: 1 }}
               >
@@ -95,6 +97,7 @@ const Faq = () => {
               <Box mt={1} ml={7}>
                 {item.description.split("\n").map((line, idx) => (
                   <Typography
+                    align="justify"
                     key={idx}
                     variant="body2"
                     sx={{ mt: 0.5, lineHeight: 1.6 }}
