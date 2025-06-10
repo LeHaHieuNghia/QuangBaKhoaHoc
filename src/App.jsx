@@ -9,6 +9,8 @@ import Form from "./component/registrationForm.jsx";
 import Testimonials from "./component/testimonials.jsx";
 import Feedback from "./component/feedback.jsx";
 import Footer from "./component/footer.jsx";
+import CoreOfValue from "./component/coreOfValue.jsx";
+import Educator from "./component/educator.jsx";
 
 export const App = () => {
   const theme = useTheme();
@@ -20,6 +22,7 @@ export const App = () => {
           sx={{ background: theme.palette.grey[100], width: "100%" }}
         >
           <Header />
+
 
           <Box id="intro">
             <HeroSection />
