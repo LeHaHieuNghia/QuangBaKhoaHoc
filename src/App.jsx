@@ -9,6 +9,8 @@ import Form from "./component/registrationForm.jsx";
 import Testimonials from "./component/testimonials.jsx";
 import Feedback from "./component/feedback.jsx";
 import Footer from "./component/footer.jsx";
+import CoreOfValue from "./component/coreOfValue.jsx";
+import Educator from "./component/educator.jsx";
 
 export const App = () => {
   const theme = useTheme();
@@ -23,8 +25,10 @@ export const App = () => {
         >
           <Header />
           <HeroSection />
+          <CoreOfValue />
           <Benefit />
           <CourseRoadmap />
+          <Educator />
           <Certificate />
           <Testimonials />
           <Feedback />
