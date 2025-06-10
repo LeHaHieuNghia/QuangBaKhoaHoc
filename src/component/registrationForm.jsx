@@ -124,16 +124,19 @@ const Form = () => {
           justifyContent: "center",
           alignItems: "center",
           minHeight: "100vh",
-          boxSizing: "border-box",
           backgroundColor: "#D9D1C5",
+          px: { xs: 2, md: 5 },
         }}
       >
         <Box
+          mt={4}
           sx={{
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
+            width: { xs: "80%", md: "100%" },
             maxWidth: 1100,
             width: "100%",
+            mx: "auto",
             borderRadius: "10px",
             overflow: "hidden",
           }}
@@ -147,6 +150,7 @@ const Form = () => {
               justifyContent: "center",
               alignItems: "center",
               textAlign: "center",
+              minHeight: { xs: "50vh", md: "auto" },
             }}
           >
             <Box
@@ -167,12 +171,13 @@ const Form = () => {
                 VẬY CÒN CHẦN CHỪ GÌ NỮA?
               </Typography>
               <Typography
-                variant="h4"
+                variant="h5"
                 sx={{
                   fontWeight: 700,
                   color: "#5C4033",
-                  mb: 4,
+                  mb: 2,
                 }}
+                fontSize={{ xs: "1.9rem", md: "2.5rem" }}
               >
                 NHẬN NGAY ƯU ĐÃI NHÉ
               </Typography>
@@ -180,33 +185,34 @@ const Form = () => {
             <Box
               sx={{
                 backgroundColor: "rgba(236, 196, 118, 1)",
-                width: "99%",
                 marginLeft: "10px",
-                borderRadius: "10px 0px 0px 10px",
                 border: "1px solid #000",
                 mb: 3,
                 display: "flex",
-                flexDirection: "row",
+                flexDirection: { xs: "column", md: "row" },
+                borderRadius: { xs: "10px", md: "10px 0px 0px 10px" },
+                width: { md: "99%", xs: "100%" },
               }}
             >
+              {/* LEFT */}
               <Box
-                width="40%"
-                height="100%"
-                minWidth="250"
-                display="flex"
-                flexDirection="column"
-                justifyItems="flex-start"
+                sx={{
+                  width: { xs: "100%", md: "40%" },
+                  minWidth: 250,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyItems: "flex-start",
+                }}
               >
                 <Typography
                   variant="h4"
                   fontWeight={600}
-                  fontSize={{ sx: "2.3rem", md: "4.2rem" }}
+                  fontSize={{ xs: "2.3rem", md: "4.2rem" }}
                   textTransform="uppercase"
                   mt={2}
                   color="red"
                 >
-                  FLASH <br />
-                  SALE
+                  FLASH SALE
                 </Typography>
                 <Typography mt={1} fontSize={16} color="red" fontWeight={600}>
                   CHỈ 10 SLOT NHANH NHẤT
@@ -218,35 +224,36 @@ const Form = () => {
                   <CountdownTimer targetDate="2025-06-10T23:59:59" />
                 </Box>
               </Box>
+
+              {/* RIGHT */}
               <Box
-                width="70%"
-                height="100%"
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-                color="white"
+                sx={{
+                  width: { xs: "100%", md: "70%" },
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  color: "white",
+                }}
               >
                 <Typography
                   fontWeight={700}
-                  fontSize={{ sx: "1rem", md: "2rem" }}
+                  fontSize={{ xs: "1rem", md: "2rem" }}
                   textTransform="uppercase"
                 >
                   Giá niêm yết
                 </Typography>
                 <Typography
                   fontWeight={700}
-                  fontSize={{ sx: "2rem", md: "3rem" }}
+                  fontSize={{ xs: "2rem", md: "3rem" }}
                   textTransform="uppercase"
-                  style={{
-                    textDecoration: "line-through",
-                  }}
+                  sx={{ textDecoration: "line-through" }}
                 >
                   4.600.000 VNĐ
                 </Typography>
                 <Typography
                   color="red"
                   fontWeight="bold"
-                  fontSize={{ sx: "1rem", md: "2rem" }}
+                  fontSize={{ xs: "1rem", md: "2rem" }}
                 >
                   chỉ còn
                 </Typography>
@@ -257,11 +264,13 @@ const Form = () => {
                   width="80%"
                   margin="0 auto"
                   fontWeight="bold"
-                  fontSize={{ sx: "1rem", md: "2.5rem" }}
+                  fontSize={{ xs: "1rem", md: "2.5rem" }}
                   sx={{
                     animation: `${pulseAnimation} 1.5s infinite ease-in-out`,
                     textAlign: "center",
                     color: "white",
+                    mt: 1,
+                    mb: 2,
                   }}
                 >
                   3.600.000 VND
@@ -274,13 +283,14 @@ const Form = () => {
           <Box
             sx={{
               flex: 1,
-              backgroundColor: "#B09680", // Brownish background from image
+              backgroundColor: "#B09680",
               p: { xs: 3, sm: 5 },
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               alignItems: "center",
             }}
+            width={{ sx: "10%" }}
           >
             <Typography
               variant="h4"
