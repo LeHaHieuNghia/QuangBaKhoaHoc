@@ -7,6 +7,7 @@ import Certificate from "./component/certificate.jsx";
 import Faq from "./component/faq.jsx";
 import Form from "./component/registrationForm.jsx";
 import Testimonials from "./component/testimonials.jsx";
+import Feedback from "./component/feedback.jsx";
 
 export const App = () => {
   const theme = useTheme();
@@ -14,7 +15,7 @@ export const App = () => {
     <Grid justifyContent="center" margin={0}>
       <Grid item xs={6} sm={10} md={8} lg={6}>
         <Stack
-          spacing={{ xs: 1, sm: 2 }}
+          // spacing={{ xs: 1, sm: 2 }}
           direction="column"
           // useFlexGap
           sx={{ background: theme.palette.grey[100], width: "100%" }}
@@ -25,8 +26,9 @@ export const App = () => {
           <CourseRoadmap />
           <Certificate />
           <Testimonials />
-          <Faq />
+          <Feedback />
           <Form />
+          <Faq />
         </Stack>
       </Grid>
     </Grid>
