@@ -23,9 +23,11 @@ export const App = () => {
         >
           <Header />
 
-
           <Box id="intro">
             <HeroSection />
+          </Box>
+          <Box id="coreOfValue">
+            <CoreOfValue />
           </Box>
 
           <Box id="content">
@@ -35,7 +37,9 @@ export const App = () => {
           <Box>
             <CourseRoadmap />
           </Box>
-
+          <Box id="educator">
+            <Educator />
+          </Box>
           <Box id="certificate">
             <Certificate />
           </Box>

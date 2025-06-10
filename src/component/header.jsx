@@ -57,6 +57,8 @@ const Header = () => {
         "instructor",
         "register",
         "faq",
+        "educator",
+        "coreOfValue",
       ];
       const headerHeight = 80;
 
@@ -89,7 +91,7 @@ const Header = () => {
   const pages = [
     { name: "Giới thiệu", id: "intro" },
     { name: "Nội dung học", id: "content" },
-    { name: "Giảng viên", id: "instructor" },
+    { name: "Giảng viên", id: "educator" },
     { name: "Chứng chỉ", id: "certificate" },
     { name: "Câu hỏi thường gặp", id: "faq" },
     { name: "Đăng ký", id: "register" },
