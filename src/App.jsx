@@ -8,6 +8,7 @@ import Faq from "./component/faq.jsx";
 import Form from "./component/registrationForm.jsx";
 import Testimonials from "./component/testimonials.jsx";
 import Feedback from "./component/feedback.jsx";
+import Footer from "./component/footer.jsx";
 
 export const App = () => {
   const theme = useTheme();
@@ -29,6 +30,7 @@ export const App = () => {
           <Feedback />
           <Form />
           <Faq />
+          <Footer />
         </Stack>
       </Grid>
     </Grid>

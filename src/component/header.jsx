@@ -96,6 +96,7 @@ const Header = () => {
           container
           display={"flex"}
           justifyContent={"space-between"}
+          // spacing={15}
           sx={{
             margin: 0,
             padding: { xs: 1, sm: 2 },
