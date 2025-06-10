@@ -38,7 +38,7 @@ const Certificate = () => {
         }}
       >
         Chứng nhận kiến thức nền tảng về AI – Theo chuẩn kiểm định kỹ thuật của
-        OpenAI Foundation (hoặc sử dụng OpenAI API/TechStack)
+        OpenAI Foundation
       </Typography>
     </Box>
   );
