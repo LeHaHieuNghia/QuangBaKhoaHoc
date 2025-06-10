@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -13,7 +13,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { SendMail } from "../services/sendMail";
 import { LoadingPopup } from "./popup/LoadingPopup";
 import { PositionData } from "../data/positionData"; // Keep this for the 'position' field
-
+import CountdownTimer from "./countdownTimer";
 const jobOptions = PositionData; // Keep this for the 'position' field
 
 const Form = () => {
@@ -110,7 +110,11 @@ const Form = () => {
   80% { transform: translateX(5px); }
   100% { transform: translateX(0); }
 `;
-
+  const pulseAnimation = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+`;
   return (
     <>
       <LoadingPopup open={isLoading} />
@@ -120,16 +124,15 @@ const Form = () => {
           justifyContent: "center",
           alignItems: "center",
           minHeight: "100vh",
-          p: 2,
           boxSizing: "border-box",
-          backgroundColor: "#D9D1C5", // Background color from image
+          backgroundColor: "#D9D1C5",
         }}
       >
         <Box
           sx={{
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
-            maxWidth: 1000,
+            maxWidth: 1100,
             width: "100%",
             borderRadius: "10px",
             overflow: "hidden",
@@ -137,8 +140,8 @@ const Form = () => {
         >
           <Box
             sx={{
-              flex: 1,
-              p: { xs: 3, sm: 5 },
+              flex: 2,
+
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -176,20 +179,93 @@ const Form = () => {
             </Box>
             <Box
               sx={{
-                backgroundColor: "#FFB800",
-                width: "100%",
-                p: { xs: 2, sm: 3 },
-                borderRadius: "5px",
+                backgroundColor: "rgba(236, 196, 118, 1)",
+                width: "99%",
+                marginLeft: "10px",
+                borderRadius: "10px 0px 0px 10px",
+                border: "1px solid #000",
                 mb: 3,
                 display: "flex",
                 flexDirection: "row",
               }}
             >
-              <Box backgroundColor="red" width="30%" height="100%">
-                ầ
+              <Box
+                width="40%"
+                height="100%"
+                minWidth="250"
+                display="flex"
+                flexDirection="column"
+                justifyItems="flex-start"
+              >
+                <Typography
+                  variant="h4"
+                  fontWeight={600}
+                  fontSize={{ sx: "2.3rem", md: "4.2rem" }}
+                  textTransform="uppercase"
+                  mt={2}
+                  color="red"
+                >
+                  FLASH <br />
+                  SALE
+                </Typography>
+                <Typography mt={1} fontSize={16} color="red" fontWeight={600}>
+                  CHỈ 10 SLOT NHANH NHẤT
+                </Typography>
+                <Typography mt={1} fontWeight={600}>
+                  Khuyến mãi sắp kết thúc
+                </Typography>
+                <Box mt={1}>
+                  <CountdownTimer targetDate="2025-06-10T23:59:59" />
+                </Box>
               </Box>
-              <Box backgroundColor="blue" width="70%" height="100%">
-                ádasd
+              <Box
+                width="70%"
+                height="100%"
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+                color="white"
+              >
+                <Typography
+                  fontWeight={700}
+                  fontSize={{ sx: "1rem", md: "2rem" }}
+                  textTransform="uppercase"
+                >
+                  Giá niêm yết
+                </Typography>
+                <Typography
+                  fontWeight={700}
+                  fontSize={{ sx: "2rem", md: "3rem" }}
+                  textTransform="uppercase"
+                  style={{
+                    textDecoration: "line-through",
+                  }}
+                >
+                  4.600.000 VNĐ
+                </Typography>
+                <Typography
+                  color="red"
+                  fontWeight="bold"
+                  fontSize={{ sx: "1rem", md: "2rem" }}
+                >
+                  chỉ còn
+                </Typography>
+                <Typography
+                  p={2}
+                  bgcolor="red"
+                  borderRadius="30px"
+                  width="80%"
+                  margin="0 auto"
+                  fontWeight="bold"
+                  fontSize={{ sx: "1rem", md: "2.5rem" }}
+                  sx={{
+                    animation: `${pulseAnimation} 1.5s infinite ease-in-out`,
+                    textAlign: "center",
+                    color: "white",
+                  }}
+                >
+                  3.600.000 VND
+                </Typography>
               </Box>
             </Box>
           </Box>
@@ -207,16 +283,16 @@ const Form = () => {
             }}
           >
             <Typography
-              variant="h5"
+              variant="h4"
               sx={{
-                fontFamily: "serif",
                 fontWeight: 700,
                 color: "#FFFFFF",
                 mb: 3,
                 textAlign: "center",
               }}
+              textTransform="uppercase"
             >
-              ĐĂNG KÝ MUA NGAY
+              Tham gia ngay
             </Typography>
             <form onSubmit={handleSubmit} style={{ width: "100%" }}>
               <Stack spacing={2.5}>
@@ -314,6 +390,10 @@ const Form = () => {
                     backgroundColor: "#4A352A", // Darker brown on hover
                   },
                   borderRadius: "5px",
+
+                  animation: `${pulseAnimation} 1.5s infinite ease-in-out`,
+                  textAlign: "center",
+                  color: "white", // Cho dễ nhìn hơn trên nền đỏ
                 }}
               >
                 Đăng ký ngay
