@@ -22,7 +22,7 @@ const HeroSection = () => {
     <Box
       id="intro"
       sx={{
-        position: "relative",
+        // position: "relative",
         width: "100%",
         height: "100vh",
         overflow: "hidden",
