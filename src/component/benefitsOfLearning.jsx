@@ -61,7 +61,7 @@ const Benefit = () => {
           container
           spacing={{ xs: 2, md: 4 }}
           justifyContent="center"
-          alignItems="center"
+          alignItems="stretch"
         >
           {benefits.map((benefit, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
@@ -86,8 +86,8 @@ const Benefit = () => {
                     flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center",
-                    height: "100%",
-                    width: 800,
+                    width: "100%", // Fix width
+                    maxWidth: "100%", // Avoid overflow
                   }}
                 >
                   <Box
@@ -127,7 +127,16 @@ const Benefit = () => {
             </Grid>
           ))}
         </Grid>
-        <CustomButton title="Đăng ký ngay" animation="shake" />
+
+        <Box
+          sx={{
+            mt: { xs: 4, md: 6 },
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <CustomButton title="Đăng ký ngay" animation="shake" />
+        </Box>
       </Container>
     </Box>
   );

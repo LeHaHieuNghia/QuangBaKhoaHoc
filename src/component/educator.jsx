@@ -12,12 +12,12 @@ import { EducatorData } from "../data/educatorData";
 
 const Educator = () => {
   return (
-    <Box mt={4} px={2}>
+    <Box p={4} bgcolor="rgba(38, 21, 97, 0.5)">
       <Typography
         variant="h5"
         fontWeight="bold"
         fontSize={{ xs: "1.5rem", md: "2.125rem" }}
-        color="#0E2148"
+        color="white"
         textAlign="center"
         mb={4}
       >

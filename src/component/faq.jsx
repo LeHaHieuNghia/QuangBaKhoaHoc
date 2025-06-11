@@ -18,6 +18,7 @@ const Faq = () => {
         width: "100%",
         py: 2,
         backgroundColor: "#D9D1C5 ",
+        willChange: "unset",
       }}
     >
       <Card

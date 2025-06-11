@@ -40,9 +40,9 @@ const Testimonials = () => {
 
   return (
     <Box
-      mt={4}
       sx={{
-        backgroundColor: "rgba(255, 255, 255, 0.74)",
+        color: "white",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
         opacity: 1,
         py: 4,
         px: 2,

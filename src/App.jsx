@@ -12,7 +12,6 @@ import Feedback from "./component/feedback.jsx";
 import Footer from "./component/footer.jsx";
 import CoreOfValue from "./component/coreOfValue.jsx";
 import Educator from "./component/educator.jsx";
-import Participants from "./component/participants.jsx";
 import bg from "./assets/tri-tue-nhan-tao-ai.jpg";
 
 // Scroll animation wrapper
@@ -125,10 +124,6 @@ export const App = () => {
 
           <ScrollAnimationBox delay={100}>
             <Feedback />
-          </ScrollAnimationBox>
-
-          <ScrollAnimationBox delay={100}>
-            <Participants />
           </ScrollAnimationBox>
 
           <ScrollAnimationBox id="register" delay={200}>

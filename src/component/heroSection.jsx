@@ -1,25 +1,33 @@
-import { Grid, Typography, Box, Container, keyframes } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Box,
+  Container,
+  keyframes,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
-import Background from "../assets/Background1.jpg"; // Đảm bảo đường dẫn đúng
+import Background from "../assets/Background1.jpg";
 import OfferPopup from "./popup/offerPopup";
 
 const HeroSection = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const [open, setOpen] = useState(false);
-  const title = [
-    { id: 1, text: "Ứng Dụng AI - X2 Năng Suất Làm Việc" },
-    // { id: 2, text: "Để Làm Việc Thông Minh Hơn" },
-  ];
+
+  const title = [{ id: 1, text: "Ứng Dụng AI - X2 Năng Suất Làm Việc" }];
+
   const subtitle = [
     {
       id: 1,
-      text: "Khóa học dành riêng cho chủ doanh nghiệp & nhân sự văn phòng ",
+      text: "Khóa học dành riêng cho chủ doanh nghiệp & nhân sự văn phòng",
     },
-    {
-      id: 2,
-      text: "Cấp chứng chỉ chuẩn OpenAI",
-    },
+    { id: 2, text: "Cấp chứng chỉ chuẩn OpenAI" },
   ];
+
   const shake = keyframes`
     0% { transform: translateX(0); }
     20% { transform: translateX(-5px); }
@@ -28,16 +36,15 @@ const HeroSection = () => {
     80% { transform: translateX(5px); }
     100% { transform: translateX(0); }
   `;
+
   return (
     <Box
       id="intro"
       sx={{
-        // position: "relative",
         width: "100%",
         height: "100vh",
         overflow: "hidden",
-        scrollMarginTop: "80px", // Add space for fixed header
-        scrolled: { backgroundColor: "white" },
+        scrollMarginTop: "80px",
       }}
     >
       {/* Background Image */}
@@ -56,85 +63,143 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Content Overlay */}
+      {/* Content */}
       <Container
         sx={{
           position: "relative",
           height: "100%",
-          zIndex: 1,
+          zIndex: 2,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
-          pt: "150px",
-          ml: "-30px",
+          justifyContent: "center",
+          alignItems: "center",
+          pt: { xs: 10, sm: 15, md: "150px" },
         }}
       >
         <Box
-          sx={{
-            maxWidth: "100%",
-            width: "100%",
-            textAlign: "center",
-            px: { xs: 2, sm: 3, md: 3 },
-          }}
+          display="flex"
+          flexDirection={{ xs: "column", lg: "row" }}
+          justifyContent="center"
+          alignItems="center"
+          width="100%"
+          gap={{ xs: 4, md: 6 }}
+          px={2}
         >
-          {title.map((item) => (
-            <Typography
-              key={item.id}
-              sx={{
-                width: "100%",
-                color: "#FFB800",
-                fontSize: { xs: "2rem", sm: "2.5rem", md: "4rem" },
-                fontWeight: "bold",
-                mb: { xs: 2, sm: 3 },
-                lineHeight: 1.2,
-              }}
-            >
-              {item.text}
-            </Typography>
-          ))}
-
-          {subtitle.map((item) => (
-            <Typography
-              key={item.id}
-              sx={{
-                fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
-                color: "white",
-                mb: { xs: 1, sm: 1.5 },
-                lineHeight: 1.5,
-              }}
-            >
-              {item.text}
-            </Typography>
-          ))}
-
-          <Button
+          {/* Text Section */}
+          <Box
             sx={{
-              width: { xs: "90%", sm: "350px", md: "400px" },
-              height: { xs: "45px", sm: "60px", md: "70px" },
-              backgroundColor: "#FFB800",
-              fontSize: { xs: "0.9rem", sm: "1.25rem", md: "1.5rem" },
-              fontWeight: "bold",
-              mt: { xs: 3, sm: 4, md: 5 },
-              borderRadius: "8px",
-              mx: "auto",
-              display: "block",
-
-              "&:hover": {
-                backgroundColor: "#E6A600",
-                transform: "scale(1.05)",
-                transition: "all 0.3s ease",
-              },
-              animation: `${shake} 0.6s infinite`,
+              maxWidth: { xs: "100%", md: "60%" },
+              textAlign: { xs: "center", md: "left" },
             }}
-            variant="contained"
-            disableElevation
-            onClick={() => setOpen(true)}
           >
-            Đăng ký ngay
-          </Button>
-          <OfferPopup open={open} onClose={() => setOpen(false)} />
+            {title.map((item) => (
+              <Typography
+                key={item.id}
+                sx={{
+                  color: "#FFB800",
+                  fontSize: { xs: "2rem", sm: "2.5rem", md: "4rem" },
+                  fontWeight: "bold",
+                  mb: { xs: 2, sm: 3 },
+                  lineHeight: 1.2,
+                }}
+              >
+                {item.text}
+              </Typography>
+            ))}
+
+            {subtitle.map((item) => (
+              <Typography
+                key={item.id}
+                sx={{
+                  fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
+                  color: "white",
+                  mb: { xs: 1, sm: 1.5 },
+                  lineHeight: 1.5,
+                }}
+              >
+                {item.text}
+              </Typography>
+            ))}
+          </Box>
+
+          {/* Statistics Box */}
+          <Box
+            sx={{
+              width: {
+                xs: "100%",
+                sm: "80%",
+                md: "50%",
+                lg: "30%",
+              },
+              height: {
+                xs: "auto",
+                sm: "auto",
+                md: "50vh",
+              },
+              boxShadow: "0 8px 8px rgba(68, 27, 235, 0.3)",
+              backgroundImage: "linear-gradient(135deg, #0E2148, purple)",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-evenly",
+              borderRadius: "25px",
+              color: "white",
+              p: 3,
+              textAlign: "center",
+            }}
+          >
+            <Box
+              display="flex"
+              flexDirection={{ xs: "column", sm: "row" }}
+              justifyContent="space-evenly"
+              alignItems="center"
+              gap={{ xs: 2, sm: 0 }}
+            >
+              <Box>
+                <Typography variant="h4" fontWeight="bold">
+                  100 +
+                </Typography>
+                <Typography>Doanh nghiệp</Typography>
+              </Box>
+              <Box>
+                <Typography variant="h4" fontWeight="bold">
+                  200 +
+                </Typography>
+                <Typography>Buổi đào tạo</Typography>
+              </Box>
+            </Box>
+            <Box mt={3}>
+              <Typography variant="h4" fontWeight="bold">
+                32000 +
+              </Typography>
+              <Typography>Học viên đã học</Typography>
+            </Box>
+          </Box>
         </Box>
+        <Button
+          sx={{
+            width: { xs: "90%", sm: "350px", md: "400px" },
+            height: { xs: "45px", sm: "60px", md: "70px" },
+            backgroundColor: "#FFB800",
+            fontSize: { xs: "0.9rem", sm: "1.25rem", md: "1.5rem" },
+            fontWeight: "bold",
+            mt: { xs: 3, sm: 4, md: 5 },
+            borderRadius: "8px",
+            mx: { xs: "auto", md: "unset" },
+            display: "block",
+            "&:hover": {
+              backgroundColor: "#E6A600",
+              transform: "scale(1.05)",
+              transition: "all 0.3s ease",
+            },
+            animation: `${shake} 0.6s infinite`,
+          }}
+          variant="contained"
+          disableElevation
+          onClick={() => setOpen(true)}
+        >
+          Đăng ký ngay
+        </Button>
+        <OfferPopup open={open} onClose={() => setOpen(false)} />
       </Container>
     </Box>
   );
