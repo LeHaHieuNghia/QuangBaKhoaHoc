@@ -58,10 +58,11 @@ const Footer = () => {
               variant="body2"
               sx={{ opacity: 0.8, mb: 2 }}
             >
-              It's our flexible and holistic approach to driving transformation
-              within your business. By leveraging cutting-edge technology,
-              guided by industry expertise and an agile work style, our team has
-              innovative solutions for your challenges.{" "}
+              Với các giải pháp linh hoạt và toàn diện của chúng tôi để thúc đẩy
+              chuyển đổi trong doanh nghiệp của bạn. Bằng cách tận dụng công
+              nghệ tiên tiến, được hướng dẫn bởi chuyên gia trong ngành và phong
+              cách làm việc nhanh nhẹn, Suri Technologies có các giải pháp sáng
+              tạo cho những thách thức của bạn.
             </Typography>
           </Grid>
 
