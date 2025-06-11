@@ -68,7 +68,7 @@ const LearnAi = () => {
                 color="#000"
                 fontSize={{ xs: 15, md: 20 }}
                 mb={1}
-                textAlign="center"
+                textAlign="justify"
               >
                 {item.title}
               </Typography>
