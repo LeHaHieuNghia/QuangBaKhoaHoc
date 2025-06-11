@@ -29,9 +29,10 @@ const Certificate = () => {
 
       <Typography
         variant="body1"
+        fontWeight="600"
         sx={{
           maxWidth: "800px",
-          fontSize: "1rem",
+          fontSize: "1.5rem",
           lineHeight: 1.6,
           color: "text.primary",
           fontStyle: "italic",

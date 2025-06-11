@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { CoreOfValueData } from "../data/coreOfValueData";
 
 const CoreOfValue = () => {
@@ -9,7 +9,7 @@ const CoreOfValue = () => {
       display="flex"
       flexDirection="column"
       alignItems="center"
-      width="90%"
+      width="100%"
       margin="0 auto"
       borderRadius="15px"
       mb={4}
@@ -25,18 +25,18 @@ const CoreOfValue = () => {
         Sứ mệnh & Giá trị cốt lõi
       </Typography>
 
-      <Box
-        mt={{ sx: 2, md: 4 }}
+      <Grid
+        mt={{ xs: 2, md: 4 }}
         display="flex"
         flexDirection={{ xs: "column", md: "row" }}
-        justifyContent="space-evenly"
+        justifyContent="center"
         alignItems="stretch "
         width="100%"
         gap={4}
         flexWrap="wrap"
       >
         {CoreOfValueData.map((item) => (
-          <Box
+          <Grid
             key={item.id}
             flex={1}
             maxWidth={{ xs: "100%", sm: "80%", md: "30%" }}
@@ -71,9 +71,9 @@ const CoreOfValue = () => {
             >
               {item.description}
             </Typography>
-          </Box>
+          </Grid>
         ))}
-      </Box>
+      </Grid>
     </Box>
   );
 };

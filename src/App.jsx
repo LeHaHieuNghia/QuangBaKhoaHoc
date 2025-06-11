@@ -14,6 +14,8 @@ import CoreOfValue from "./component/coreOfValue.jsx";
 import Educator from "./component/educator.jsx";
 import Participants from "./component/participants.jsx";
 import bg from "./assets/tri-tue-nhan-tao-ai.jpg";
+import CourseAi from "../src/component/courseAi.jsx";
+import LearnAi from "./component/whoLearnAi.jsx";
 
 // Scroll animation wrapper
 const ScrollAnimationBox = ({ children, id, delay = 0 }) => {
@@ -103,6 +105,10 @@ export const App = () => {
             <CoreOfValue />
           </ScrollAnimationBox>
 
+          <ScrollAnimationBox id="">
+            <LearnAi />
+          </ScrollAnimationBox>
+
           <ScrollAnimationBox id="content" delay={200}>
             <Benefit />
           </ScrollAnimationBox>
@@ -117,6 +123,10 @@ export const App = () => {
 
           <ScrollAnimationBox id="certificate" delay={200}>
             <Certificate />
+          </ScrollAnimationBox>
+
+          <ScrollAnimationBox id="" delay={300}>
+            <CourseAi />
           </ScrollAnimationBox>
 
           <ScrollAnimationBox id="instructor" delay={300}>
