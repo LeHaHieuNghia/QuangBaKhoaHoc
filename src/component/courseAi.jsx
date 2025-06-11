@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import { CourseData } from "../data/CourseAi.js";
+import { CourseData } from "../data/courseAi.js";
 
 const CourseAi = () => {
   return (
