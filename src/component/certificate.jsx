@@ -1,15 +1,23 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import certificate from "../assets/certificate.jfif";
-
+import heroBg from "../assets/hero-bg.jpg";
 const Certificate = () => {
   return (
     <Box
-      mt={5}
+      p={2}
       display="flex"
       flexDirection="column"
       alignItems="center"
+      sx={{
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('${heroBg}')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        textAlign: "center",
+        color: "#fff",
+      }}
       textAlign="center"
+      color="white"
     >
       <Box
         component="img"
@@ -33,7 +41,6 @@ const Certificate = () => {
           maxWidth: "800px",
           fontSize: "1rem",
           lineHeight: 1.6,
-          color: "text.primary",
           fontStyle: "italic",
         }}
       >
