@@ -12,10 +12,12 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../assets/logoSuri.png";
+import OfferPopup from "./popup/offerPopup";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -47,8 +49,8 @@ const Header = () => {
   // Lắng nghe cuộn trang và cập nhật active section
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-
+      const shouldScroll = window.scrollY > 50;
+      setIsScrolled(shouldScroll);
       // Tìm section hiện tại đang xem
       const sections = [
         "intro",
@@ -103,7 +105,6 @@ const Header = () => {
         {pages.map((page) => (
           <ListItem key={page.name} sx={{ justifyContent: "center" }}>
             <Button
-              onClick={() => scrollToSection(page.id)}
               sx={{
                 fontSize: { xs: "1rem", sm: "0.9375rem" },
                 fontWeight: "bold",
@@ -117,9 +118,11 @@ const Header = () => {
                   transform: "translateY(-2px)",
                 },
               }}
+              onClick={() => setOpen(true)}
             >
               {page.name}
             </Button>
+            <OfferPopup open={open} onClose={() => setOpen(false)} />
           </ListItem>
         ))}
       </List>
@@ -136,7 +139,9 @@ const Header = () => {
         zIndex: 1000,
         boxShadow: isScrolled ? "0 2px 6px rgba(0,0,0,0.15)" : "none",
         transition: "all 0.3s linear",
-        backgroundColor: isScrolled ? "white" : "transparent",
+        backgroundColor: isScrolled
+          ? "rgba(255, 255, 255, 0.9)"
+          : "transparent",
         backdropFilter: isScrolled ? "blur(8px)" : "none",
       }}
     >

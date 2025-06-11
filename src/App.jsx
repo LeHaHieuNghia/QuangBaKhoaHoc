@@ -1,4 +1,4 @@
-import { Grid, Stack, useTheme, Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import Header from "./component/header.jsx";
 import HeroSection from "./component/heroSection.jsx";
@@ -12,8 +12,10 @@ import Feedback from "./component/feedback.jsx";
 import Footer from "./component/footer.jsx";
 import CoreOfValue from "./component/coreOfValue.jsx";
 import Educator from "./component/educator.jsx";
+import Participants from "./component/participants.jsx";
+import bg from "./assets/tri-tue-nhan-tao-ai.jpg";
 
-// Component wrapper để handle scroll animation
+// Scroll animation wrapper
 const ScrollAnimationBox = ({ children, id, delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef(null);
@@ -29,20 +31,12 @@ const ScrollAnimationBox = ({ children, id, delay = 0 }) => {
           }
         });
       },
-      {
-        threshold: 0.1, // Hiển thị khi 10% element vào viewport
-        rootMargin: "0px 0px -50px 0px", // Trigger trước khi element hoàn toàn vào view
-      }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-
+    if (elementRef.current) observer.observe(elementRef.current);
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
-      }
+      if (elementRef.current) observer.unobserve(elementRef.current);
     };
   }, [delay]);
 
@@ -55,6 +49,7 @@ const ScrollAnimationBox = ({ children, id, delay = 0 }) => {
         transform: isVisible ? "translateY(0)" : "translateY(50px)",
         transition: "all 0.8s ease-out",
         willChange: "opacity, transform",
+        width: "100%",
       }}
     >
       {children}
@@ -63,15 +58,41 @@ const ScrollAnimationBox = ({ children, id, delay = 0 }) => {
 };
 
 export const App = () => {
-  const theme = useTheme();
-
   return (
-    <Grid justifyContent="center" margin={0}>
-      <Grid item xs={6} sm={10} md={8} lg={6}>
-        <Stack
-          direction="column"
-          sx={{ background: theme.palette.grey[100], width: "100%" }}
-        >
+    <Box
+      sx={{
+        position: "relative",
+        minHeight: "100vh",
+        width: "100%",
+        overflowX: "hidden",
+        bgcolor: "transparent",
+      }}
+    >
+      {/* Background Image Fixed Full Screen */}
+      <Box
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: `url(${bg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          zIndex: -1,
+        }}
+      />
+
+      {/* Content Layer */}
+      <Box
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          width: "100%",
+        }}
+      >
+        <Stack spacing={0}>
           <Header />
 
           <ScrollAnimationBox id="intro">
@@ -106,6 +127,10 @@ export const App = () => {
             <Feedback />
           </ScrollAnimationBox>
 
+          <ScrollAnimationBox delay={100}>
+            <Participants />
+          </ScrollAnimationBox>
+
           <ScrollAnimationBox id="register" delay={200}>
             <Form />
           </ScrollAnimationBox>
@@ -116,7 +141,7 @@ export const App = () => {
 
           <Footer />
         </Stack>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };

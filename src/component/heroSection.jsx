@@ -1,9 +1,11 @@
-import { Grid, Typography, Box, Container } from "@mui/material";
+import { Grid, Typography, Box, Container, keyframes } from "@mui/material";
 import Button from "@mui/material/Button";
-import React from "react";
+import React, { useState } from "react";
 import Background from "../assets/Background1.jpg"; // Đảm bảo đường dẫn đúng
+import OfferPopup from "./popup/offerPopup";
 
 const HeroSection = () => {
+  const [open, setOpen] = useState(false);
   const title = [
     { id: 1, text: "Ứng Dụng AI - X2 Năng Suất Làm Việc" },
     // { id: 2, text: "Để Làm Việc Thông Minh Hơn" },
@@ -18,6 +20,14 @@ const HeroSection = () => {
       text: "Cấp chứng chỉ chuẩn OpenAI",
     },
   ];
+  const shake = keyframes`
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+  `;
   return (
     <Box
       id="intro"
@@ -115,12 +125,15 @@ const HeroSection = () => {
                 transform: "scale(1.05)",
                 transition: "all 0.3s ease",
               },
+              animation: `${shake} 0.6s infinite`,
             }}
             variant="contained"
             disableElevation
+            onClick={() => setOpen(true)}
           >
             Đăng ký ngay
           </Button>
+          <OfferPopup open={open} onClose={() => setOpen(false)} />
         </Box>
       </Container>
     </Box>

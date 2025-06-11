@@ -11,6 +11,7 @@ import SpeedIcon from "@mui/icons-material/Speed";
 import WorkIcon from "@mui/icons-material/Work";
 import SchoolIcon from "@mui/icons-material/School";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import CustomButton from "./button/button";
 
 const benefits = [
   {
@@ -126,6 +127,7 @@ const Benefit = () => {
             </Grid>
           ))}
         </Grid>
+        <CustomButton title="Đăng ký ngay" animation="shake" />
       </Container>
     </Box>
   );
