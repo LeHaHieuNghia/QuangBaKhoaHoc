@@ -53,10 +53,15 @@ const Footer = () => {
               }}
             />
             <Typography
-              width={400}
-              align="justify"
+              component="div"
+              sx={{
+                width: { xs: "100%", md: 400 },
+                textAlign: "justify",
+                opacity: 0.8,
+                mb: 2,
+                px: { xs: 2, md: 0 },
+              }}
               variant="body2"
-              sx={{ opacity: 0.8, mb: 2 }}
             >
               Với các giải pháp linh hoạt và toàn diện của chúng tôi để thúc đẩy
               chuyển đổi trong doanh nghiệp của bạn. Bằng cách tận dụng công

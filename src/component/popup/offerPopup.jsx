@@ -13,7 +13,6 @@ import {
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { SendMail } from "../../services/sendMail";
 import { LoadingPopup } from "./LoadingPopup";
-import { PositionData } from "../../data/positionData";
 import CountdownTimer from "../countdownTimer";
 
 const shake = keyframes`
@@ -37,15 +36,17 @@ const OfferPopup = ({ open, onClose, targetDate = "2025-06-10T23:59:59" }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({
     name: "",
-    phone: "",
     email: "",
+    phone: "",
     position: "",
+    company: "",
   });
   const [error, setError] = useState({
     name: "",
-    phone: "",
     email: "",
+    phone: "",
     position: "",
+    company: "",
   });
 
   const handleChange = (e) => {
@@ -71,11 +72,18 @@ const OfferPopup = ({ open, onClose, targetDate = "2025-06-10T23:59:59" }) => {
           phone: !/^[0-9]{10}$/.test(value) ? "SĐT phải 10 chữ số" : "",
         }));
         break;
-      case "position":
-        setError((p) => ({
-          ...p,
-          position: jobOptions.includes(value) ? "" : "Vị trí không hợp lệ",
+      case "position": // Retained from your original code
+        setError((prev) => ({
+          ...prev,
+          position: value.length < 5 ? "Vị trí công việc quá ngắn" : "",
         }));
+        break;
+      case "company": // Retained from your original code
+        setError((prev) => ({
+          ...prev,
+          company: value.length < 5 ? "Tên công ty quá ngắn" : "",
+        }));
+        break;
         break;
       default:
         break;
@@ -119,10 +127,10 @@ const OfferPopup = ({ open, onClose, targetDate = "2025-06-10T23:59:59" }) => {
                   }}
                 >
                   <Typography variant="h5" fontWeight={700} color="#5C4033">
-                    VẬY CÒN CHẦN CHỪ GÌ NỮA?
+                    Nâng Cao Hiệu Suất với AI và
                   </Typography>
                   <Typography variant="h5" fontWeight={700} color="#5C4033">
-                    NHẬN NGAY ƯU ĐÃI NHÉ
+                    dữ liệu thông minh
                   </Typography>
                 </Box>
                 <Box
@@ -209,8 +217,8 @@ const OfferPopup = ({ open, onClose, targetDate = "2025-06-10T23:59:59" }) => {
                       />
                     ))}
                     <TextField
-                      select
-                      label="Chọn vị trí công việc"
+                      type="text"
+                      label="Vị trí công việc"
                       name="position"
                       fullWidth
                       required
@@ -222,13 +230,22 @@ const OfferPopup = ({ open, onClose, targetDate = "2025-06-10T23:59:59" }) => {
                       InputProps={{
                         style: { backgroundColor: "#fff", borderRadius: 5 },
                       }}
-                    >
-                      {jobOptions.map((opt) => (
-                        <MenuItem key={opt} value={opt}>
-                          {opt}
-                        </MenuItem>
-                      ))}
-                    </TextField>
+                    />
+                    <TextField
+                      type="text"
+                      label="Tên công ty"
+                      name="company"
+                      fullWidth
+                      required
+                      value={data.company}
+                      onChange={handleChange}
+                      error={!!error.company}
+                      helperText={error.company}
+                      InputLabelProps={{ style: { color: "#5C4033" } }}
+                      InputProps={{
+                        style: { backgroundColor: "#fff", borderRadius: 5 },
+                      }}
+                    />
                     <Button
                       type="submit"
                       variant="contained"

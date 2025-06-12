@@ -131,7 +131,7 @@ const Form = () => {
           justifyContent: "center",
           alignItems: "center",
           minHeight: "100vh",
-          backgroundColor: "#9FD7F9",
+          backgroundColor: "#0E2148",
           px: { xs: 2, md: 5 },
           color: "black ",
         }}
@@ -176,7 +176,7 @@ const Form = () => {
                 }}
                 fontSize={{ xs: "1.2rem", md: "1.6rem" }}
               >
-                VẬY CÒN CHẦN CHỪ GÌ NỮA?
+                Nâng Cao Hiệu Suất với AI và
               </Typography>
               <Typography
                 variant="h5"
@@ -186,12 +186,12 @@ const Form = () => {
                 }}
                 fontSize={{ xs: "1.9rem", md: "2.5rem" }}
               >
-                NHẬN NGAY ƯU ĐÃI NHÉ
+                Dữ liệu thông minh
               </Typography>
             </Box>
             <Box
               sx={{
-                backgroundColor: "#6586E6",
+                backgroundColor: "#00CAFF",
                 marginLeft: "10px",
                 border: "1px solid #000",
                 mb: 3,
@@ -290,7 +290,7 @@ const Form = () => {
           <Box
             sx={{
               flex: 1,
-              backgroundColor: "#0D47A1",
+              backgroundColor: "#27548A",
               p: { xs: 3, sm: 5 },
               display: "flex",
               flexDirection: "column",
@@ -413,11 +413,8 @@ const Form = () => {
                   py: 1.5,
                   fontSize: "1.1rem",
                   fontWeight: "bold",
-                  backgroundColor: "#5C4033", // Dark brown button color
+                  backgroundColor: "red", // Dark brown button color
                   color: "#FFFFFF",
-                  "&:hover": {
-                    backgroundColor: "#4A352A", // Darker brown on hover
-                  },
                   borderRadius: "5px",
 
                   animation: `${pulseAnimation} 1.5s infinite ease-in-out`,

@@ -32,7 +32,7 @@ const Educator = () => {
                 display: "flex",
                 flexDirection: "column",
 
-                maxWidth: 280,
+                maxWidth: 300,
                 margin: "0 auto",
               }}
             >
@@ -46,7 +46,8 @@ const Educator = () => {
                   disablePictureInPicture
                   controlsList="nodownload nofullscreen noremoteplayback"
                   sx={{
-                    height: 160,
+                    height: "100%",
+                    width: "100%",
                     borderRadius: "8px 8px 0 0",
                     pointerEvents: "none",
                     "&::-webkit-media-controls": {
@@ -63,7 +64,7 @@ const Educator = () => {
                   image={item.src}
                   alt={item.name}
                   sx={{
-                    height: 160,
+                    height: "100%",
                     borderRadius: "8px 8px 0 0",
                     objectFit: "cover",
                   }}

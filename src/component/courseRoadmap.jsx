@@ -43,7 +43,8 @@ const CourseRoadmap = () => {
       sx={{
         py: { xs: 4, md: 8 },
         position: "relative",
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${Background1})`,
+        // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${Background1})`,
+        backgroundColor: "#0E2148",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
