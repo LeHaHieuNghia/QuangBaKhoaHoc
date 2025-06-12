@@ -228,7 +228,7 @@ const Form = () => {
                   Khuyến mãi sắp kết thúc
                 </Typography>
                 <Box mt={1}>
-                  <CountdownTimer targetDate="2025-06-10T23:59:59" />
+                  <CountdownTimer />
                 </Box>
               </Box>
 
