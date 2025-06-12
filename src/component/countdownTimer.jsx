@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography, Grid } from "@mui/material";
 
-const CountdownTimer = ({ targetDate }) => {
+const CountdownTimer = () => {
+  // Khởi tạo thời điểm kết thúc là 12 giờ kể từ lúc load trang
+  const targetDate = new Date(Date.now() + 12 * 60 * 60 * 1000);
+
   const calculateTimeLeft = () => {
-    const difference = +new Date(targetDate) - +new Date();
+    const difference = +targetDate - +new Date();
     let timeLeft = {
       days: 0,
       hours: 0,
@@ -30,7 +33,7 @@ const CountdownTimer = ({ targetDate }) => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
     return () => clearInterval(timer);
-  }, [targetDate]);
+  }, []);
 
   const renderTimeBlock = (value, label) => (
     <Box textAlign="center">

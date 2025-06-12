@@ -32,7 +32,7 @@ const pulseAnimation = keyframes`
 
 const jobOptions = PositionData;
 
-const OfferPopup = ({ open, onClose, targetDate = "2025-06-10T23:59:59" }) => {
+const OfferPopup = ({ open, onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({
     name: "",
@@ -148,7 +148,7 @@ const OfferPopup = ({ open, onClose, targetDate = "2025-06-10T23:59:59" }) => {
                   <Typography fontWeight={600}>
                     Khuyến mãi sắp kết thúc
                   </Typography>
-                  <CountdownTimer targetDate={targetDate} />
+                  <CountdownTimer />
                 </Box>
                 <Box mt={2}>
                   <Typography fontWeight={700} textDecoration="line-through">
