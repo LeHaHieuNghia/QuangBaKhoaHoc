@@ -13,6 +13,7 @@ import {
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { SendMail } from "../../services/sendMail";
 import { LoadingPopup } from "./LoadingPopup";
+import { PositionData } from "../../data/positionData";
 import CountdownTimer from "../countdownTimer";
 
 const shake = keyframes`
@@ -30,21 +31,19 @@ const pulseAnimation = keyframes`
   100% { transform: scale(1); }
 `;
 
-const jobOptions = PositionData;
-
 const OfferPopup = ({ open, onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({
     name: "",
-    email: "",
     phone: "",
+    email: "",
     position: "",
     company: "",
   });
   const [error, setError] = useState({
     name: "",
-    email: "",
     phone: "",
+    email: "",
     position: "",
     company: "",
   });
@@ -83,7 +82,6 @@ const OfferPopup = ({ open, onClose }) => {
           ...prev,
           company: value.length < 5 ? "Tên công ty quá ngắn" : "",
         }));
-        break;
         break;
       default:
         break;
@@ -127,10 +125,10 @@ const OfferPopup = ({ open, onClose }) => {
                   }}
                 >
                   <Typography variant="h5" fontWeight={700} color="#5C4033">
-                    Nâng Cao Hiệu Suất với AI và
+                    VẬY CÒN CHẦN CHỪ GÌ NỮA?
                   </Typography>
                   <Typography variant="h5" fontWeight={700} color="#5C4033">
-                    dữ liệu thông minh
+                    NHẬN NGAY ƯU ĐÃI NHÉ
                   </Typography>
                 </Box>
                 <Box
@@ -218,21 +216,6 @@ const OfferPopup = ({ open, onClose }) => {
                     ))}
                     <TextField
                       type="text"
-                      label="Vị trí công việc"
-                      name="position"
-                      fullWidth
-                      required
-                      value={data.position}
-                      onChange={handleChange}
-                      error={!!error.position}
-                      helperText={error.position}
-                      InputLabelProps={{ style: { color: "#5C4033" } }}
-                      InputProps={{
-                        style: { backgroundColor: "#fff", borderRadius: 5 },
-                      }}
-                    />
-                    <TextField
-                      type="text"
                       label="Tên công ty"
                       name="company"
                       fullWidth
@@ -246,6 +229,22 @@ const OfferPopup = ({ open, onClose }) => {
                         style: { backgroundColor: "#fff", borderRadius: 5 },
                       }}
                     />
+                    <TextField
+                      type="text"
+                      label="Vị trí công việc"
+                      name="position"
+                      fullWidth
+                      required
+                      value={data.position}
+                      onChange={handleChange}
+                      error={!!error.position}
+                      helperText={error.position}
+                      InputLabelProps={{ style: { color: "#5C4033" } }}
+                      InputProps={{
+                        style: { backgroundColor: "#fff", borderRadius: 5 },
+                      }}
+                    />
+
                     <Button
                       type="submit"
                       variant="contained"
