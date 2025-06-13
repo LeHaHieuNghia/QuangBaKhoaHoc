@@ -66,7 +66,10 @@ const CoreOfValue = () => {
             <Typography
               variant="body2"
               color="#000"
-              textAlign="justify"
+              sx={{
+                textAlign: "justify",
+                textAlignLast: "center",
+              }}
               fontSize={{ sx: 13, md: 20 }}
             >
               {item.description}

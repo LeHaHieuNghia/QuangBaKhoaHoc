@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
-import Background from "../assets/Background1.jpg";
+import Background from "../assets/bgBanner.jpg";
 import OfferPopup from "./popup/offerPopup";
 
 const HeroSection = () => {
@@ -23,9 +23,9 @@ const HeroSection = () => {
   const subtitle = [
     {
       id: 1,
-      text: "Khóa học dành riêng cho chủ doanh nghiệp & nhân sự văn phòng",
+      text: "Khóa học dành riêng cho chủ doanh nghiệp & nhân sự văn phòng và cấp chứng chỉ chuẩn OpenAI",
     },
-    { id: 2, text: "Cấp chứng chỉ chuẩn OpenAI" },
+    // { id: 2, text: " và cấp chứng chỉ chuẩn OpenAI" },
   ];
 
   const shake = keyframes`
@@ -109,6 +109,7 @@ const HeroSection = () => {
 
             {subtitle.map((item) => (
               <Typography
+                align="justify"
                 key={item.id}
                 sx={{
                   fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
@@ -137,7 +138,7 @@ const HeroSection = () => {
                 md: "50vh",
               },
               boxShadow: "0 8px 8px rgba(68, 27, 235, 0.3)",
-              backgroundImage: "linear-gradient(135deg, #0E2148, purple)",
+              backgroundImage: "linear-gradient(135deg, #4579e2, #0d1b51)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-evenly",

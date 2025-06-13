@@ -114,7 +114,7 @@ const OfferPopup = ({ open, onClose }) => {
       <LoadingPopup open={isLoading} />
       <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
         <DialogContent sx={{ p: 0 }}>
-          <Box bgcolor="#D9D1C5" px={{ xs: 2, md: 5 }} py={3}>
+          <Box bgcolor="white" px={{ xs: 2, md: 5 }} py={3}>
             <Box display="flex" flexDirection={{ xs: "column", md: "row" }}>
               {/* Left promo */}
               <Box flex={2} textAlign="center" p={3}>
@@ -124,41 +124,43 @@ const OfferPopup = ({ open, onClose }) => {
                     mb: 2,
                   }}
                 >
-                  <Typography variant="h5" fontWeight={700} color="#5C4033">
+                  <Typography variant="h5" fontWeight={700} color="#ffa645">
                     VẬY CÒN CHẦN CHỪ GÌ NỮA?
                   </Typography>
-                  <Typography variant="h5" fontWeight={700} color="#5C4033">
+                  <Typography variant="h5" fontWeight={700} color="#ffa645">
                     NHẬN NGAY ƯU ĐÃI NHÉ
                   </Typography>
                 </Box>
                 <Box
-                  bgcolor="rgba(236,196,118,1)"
+                  bgcolor="#2b67b0"
                   border="1px solid #000"
                   borderRadius="10px"
                   p={2}
                 >
-                  <Typography variant="h4" fontWeight={600} color="red">
+                  <Typography variant="h4" fontWeight={600} color="#ffa645">
                     FLASH SALE
                   </Typography>
-                  <Typography color="red" fontWeight={600}>
+                  <Typography color="#ffa645" fontWeight={600}>
                     CHỈ 10 SLOT NHANH NHẤT
                   </Typography>
-                  <Typography fontWeight={600}>
+                  <Typography color="white" fontWeight={600}>
                     Khuyến mãi sắp kết thúc
                   </Typography>
                   <CountdownTimer />
                 </Box>
                 <Box mt={2}>
-                  <Typography fontWeight={700} textDecoration="line-through">
-                    4.600.000 VNĐ
-                  </Typography>
-                  <Typography color="red" fontWeight="bold">
-                    chỉ còn
+                  <Typography
+                    color="red"
+                    fontSize={25}
+                    fontWeight={800}
+                    textDecoration="line-through"
+                  >
+                    Giảm giá
                   </Typography>
                   <Typography
                     pady={1}
                     px={2}
-                    bgcolor="red"
+                    bgcolor="#ffa645"
                     borderRadius="30px"
                     fontWeight="bold"
                     fontSize="2rem"
@@ -172,7 +174,7 @@ const OfferPopup = ({ open, onClose }) => {
                 </Box>
               </Box>
               {/* Right form */}
-              <Box flex={1} bgcolor="#B09680" p={{ xs: 3, md: 5 }}>
+              <Box flex={1} bgcolor="#2B67B0" p={{ xs: 3, md: 5 }}>
                 <Typography
                   variant="h4"
                   fontWeight={700}
@@ -255,8 +257,8 @@ const OfferPopup = ({ open, onClose }) => {
                         py: 1.5,
                         fontSize: "1.1rem",
                         fontWeight: "bold",
-                        backgroundColor: "#5C4033",
-                        "&:hover": { backgroundColor: "#4A352A" },
+                        backgroundColor: "#ffa645",
+                        // "&:hover": { backgroundColor: "#4A352A" },
                         borderRadius: 1,
                         animation: `${pulseAnimation} 1.5s infinite ease-in-out`,
                       }}

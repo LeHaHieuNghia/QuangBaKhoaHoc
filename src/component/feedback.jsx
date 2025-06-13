@@ -93,7 +93,11 @@ const Feedback = () => {
                   }}
                 />
               </Box>
-              <Typography variant="body1" m={2}>
+              <Typography
+                variant="body1"
+                sx={{ textAlignLast: "center" }}
+                m={2}
+              >
                 {item.description}
               </Typography>
               <Box

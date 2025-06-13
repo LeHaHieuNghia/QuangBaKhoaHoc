@@ -29,7 +29,7 @@ const CourseAi = () => {
           color="#0E2148"
           textAlign="center"
         >
-          Các khóa đào tạo ứng dụng Ai
+          Các khóa đào tạo ứng dụng AI
         </Typography>
 
         <Grid
@@ -73,12 +73,13 @@ const CourseAi = () => {
                 {item.title}
               </Typography>
               <Typography
-                variant="body2"
+                variant="body6"
                 width={"300px"}
                 color="#000"
-                fontSize={{ sx: 15, md: 23 }}
+                fontSize={{ sx: 15, md: 16 }}
                 mb={1}
                 align="justify"
+                sx={{ textAlignLast: "center" }}
               >
                 {item.description}
               </Typography>

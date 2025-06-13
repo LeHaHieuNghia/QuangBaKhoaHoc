@@ -10,7 +10,7 @@ export const UserData = [
     name: "Nguyễn Minh Trí",
     position: "Chuyên viên Marketing",
     description:
-      "Trước khoá học, mình hoàn toàn mù mờ về AI. Nhưng sau 3 ngày học tập cùng giảng viên của Suri Technologies, mình không chỉ hiểu được các khái niệm nền tảng mà còn biết cách ứng dụng AI vào công việc thực tế như tạo chatbot, phân tích dữ liệu và tối ưu quy trình marketing. Nội dung học rất sát thực tế, giảng viên nhiệt tình và dễ hiểu!",
+      "Trước khoá học, mình hoàn toàn mù mờ về AI. Nhưng sau 3 ngày học tập cùng giảng viên của Suri Technologies, mình không chỉ hiểu được các khái niệm nền tảng mà còn biết cách ứng dụng AI vào công việc thực tế như tạo chatbot, phân tích dữ liệu và tối ưu quy trình marketing.",
   },
   {
     id: 2,

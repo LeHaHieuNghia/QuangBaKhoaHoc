@@ -37,10 +37,12 @@ const CountdownTimer = () => {
 
   const renderTimeBlock = (value, label) => (
     <Box textAlign="center">
-      <Typography fontSize="1.5rem" fontWeight={700}>
+      <Typography fontSize="1.5rem" color="white" fontWeight={700}>
         {String(value).padStart(2, "0")}
       </Typography>
-      <Typography fontSize="0.9rem">{label}</Typography>
+      <Typography color="white" fontSize="0.9rem">
+        {label}
+      </Typography>
     </Box>
   );
 
