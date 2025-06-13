@@ -13,7 +13,7 @@ export const DataLearnAi = [
   {
     id: 1,
     img: whoLearnAi1,
-    title: "Doanh nghiệp cần nâng cao năng lực nhân sự với AI",
+    title: "Các doanh nghiệp cần nâng cao năng lực nhân sự đối với AI",
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ export const DataLearnAi = [
   {
     id: 4,
     img: whoLearnAi4,
-    title: "Giáo viên, đặc biệt mầm non, tiểu học, trung học",
+    title: "Giáo viên, mầm non, tiểu học, trung học",
   },
   {
     id: 5,
@@ -44,7 +44,7 @@ export const DataLearnAi = [
   {
     id: 7,
     img: whoLearnAi7,
-    title: "Nhóm cá nhân từ 20 người trở lên có nhu cầu học AI",
+    title: "Các nhóm cá nhân từ 20 người trở lên và có nhu cầu học AI",
   },
   {
     id: 8,
