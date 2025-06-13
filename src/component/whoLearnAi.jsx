@@ -29,7 +29,7 @@ const LearnAi = () => {
           color="#0E2148"
           textAlign="center"
         >
-          Ai nên học Ai
+          Đối tượng nên học AI
         </Typography>
 
         <Grid
