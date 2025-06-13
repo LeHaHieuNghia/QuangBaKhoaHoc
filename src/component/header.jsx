@@ -118,7 +118,13 @@ const Header = () => {
                   transform: "translateY(-2px)",
                 },
               }}
-              onClick={() => setOpen(true)}
+              onClick={() => {
+                if (page.name === "Đăng ký") {
+                  setOpen(true);
+                } else {
+                  scrollToSection(page.id);
+                }
+              }}
             >
               {page.name}
             </Button>
