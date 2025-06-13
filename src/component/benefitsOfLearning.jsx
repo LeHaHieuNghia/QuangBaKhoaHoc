@@ -16,7 +16,7 @@ import CustomButton from "./button/button";
 const benefits = [
   {
     icon: <SpeedIcon sx={{ fontSize: 40 }} />,
-    title: "Tăng năng suất 3 lần với AI văn phòng",
+    title: "Tăng năng suất gấp 3 lần với AI văn phòng",
     description:
       "Học cách sử dụng AI để tự động hóa các công việc thường xuyên, giúp tăng năng suất lên gấp đôi",
   },
@@ -42,16 +42,23 @@ const benefits = [
 
 const Benefit = () => {
   return (
-    <Box sx={{ py: { xs: 4, md: 8 }, backgroundColor: "#f5f5f5" }}>
+    <Box
+      sx={{
+        py: { xs: 4, md: 8 },
+        backgroundColor: "#f5f5f5",
+      }}
+    >
       <Container maxWidth="lg">
         <Typography
           variant="h3"
           align="center"
           sx={{
             mb: { xs: 4, md: 6 },
-            fontSize: { xs: "1.75rem", sm: "2.25rem", md: "2.5rem" },
+            fontSize: { xs: "1.5rem", sm: "2.25rem", md: "2.5rem" },
             fontWeight: "bold",
             color: "#0E2148",
+
+            textAlign: "center",
           }}
         >
           Lợi ích khi tham gia khóa học

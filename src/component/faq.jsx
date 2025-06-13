@@ -27,8 +27,6 @@ const Faq = () => {
           backgroundColor: "#FFFFFF",
           color: "#212121",
           width: "100%",
-
-          borderRadius: "30px",
           boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
         }}
       >

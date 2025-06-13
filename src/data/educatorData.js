@@ -1,7 +1,7 @@
 import NguyenThangLong from "../assets/Nguyen-Thang-Long.mp4";
 import LeLi from "../assets/Le-Li.mp4";
 import DinhDuyLinh from "../assets/Dinh-Duy-Linh.png";
-import PhamHuuPhucAn from "../assets/Pham-Huu-Phuc-An.png";
+import PhamHuuPhucAn from "../assets/phamHuuTrucAn.jpg";
 
 export const EducatorData = [
   {

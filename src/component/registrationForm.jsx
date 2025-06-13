@@ -131,7 +131,7 @@ const Form = () => {
           justifyContent: "center",
           alignItems: "center",
           minHeight: "100vh",
-          backgroundColor: "#0E2148",
+          backgroundColor: "white",
           px: { xs: 2, md: 5 },
           color: "black ",
         }}
@@ -170,6 +170,7 @@ const Form = () => {
             >
               <Typography
                 variant="h5"
+                color="#ffa645"
                 sx={{
                   fontWeight: 700,
                   mb: 2,
@@ -180,6 +181,7 @@ const Form = () => {
               </Typography>
               <Typography
                 variant="h5"
+                color="#ffa645"
                 sx={{
                   fontWeight: 700,
                   mb: 2,
@@ -191,7 +193,7 @@ const Form = () => {
             </Box>
             <Box
               sx={{
-                backgroundColor: "#00CAFF",
+                backgroundColor: "#2B67B0",
                 marginLeft: "10px",
                 border: "1px solid #000",
                 mb: 3,
@@ -217,14 +219,19 @@ const Form = () => {
                   fontSize={{ xs: "2.3rem", md: "4.2rem" }}
                   textTransform="uppercase"
                   mt={2}
-                  color="red"
+                  color="#ffa645"
                 >
                   FLASH SALE
                 </Typography>
-                <Typography mt={1} fontSize={16} color="red" fontWeight={600}>
+                <Typography
+                  mt={1}
+                  fontSize={16}
+                  color="#ffa645"
+                  fontWeight={600}
+                >
                   CHỈ 10 SLOT NHANH NHẤT
                 </Typography>
-                <Typography mt={1} fontWeight={600}>
+                <Typography color="white" mt={1} fontWeight={600}>
                   Khuyến mãi sắp kết thúc
                 </Typography>
                 <Box mt={1}>
@@ -266,7 +273,7 @@ const Form = () => {
                 </Typography>
                 <Typography
                   p={2}
-                  bgcolor="red"
+                  bgcolor="#ffa645"
                   borderRadius="30px"
                   width="80%"
                   margin="0 auto"
@@ -413,7 +420,7 @@ const Form = () => {
                   py: 1.5,
                   fontSize: "1.1rem",
                   fontWeight: "bold",
-                  backgroundColor: "red", // Dark brown button color
+                  backgroundColor: "#ffa645", // Dark brown button color
                   color: "#FFFFFF",
                   borderRadius: "5px",
 

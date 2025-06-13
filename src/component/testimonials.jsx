@@ -42,7 +42,7 @@ const Testimonials = () => {
     <Box
       sx={{
         color: "white",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "rgb(217 217 217)",
         opacity: 1,
         py: 4,
         px: 2,
@@ -54,6 +54,7 @@ const Testimonials = () => {
         textTransform="uppercase"
         mb={3}
         textAlign="center"
+        color="#0E2148"
       >
         Các khóa học tiêu biểu
       </Typography>
@@ -100,6 +101,7 @@ const Testimonials = () => {
                 variant="subtitle1"
                 fontWeight={600}
                 mt={2}
+                color="#0E2148"
                 textAlign="center"
               >
                 {item.title}

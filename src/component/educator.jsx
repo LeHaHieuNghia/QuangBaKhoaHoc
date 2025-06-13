@@ -12,12 +12,12 @@ import { EducatorData } from "../data/educatorData";
 
 const Educator = () => {
   return (
-    <Box p={4} bgcolor="rgba(38, 21, 97, 0.5)">
+    <Box p={4} bgcolor="rgb(217 217 217)">
       <Typography
         variant="h5"
         fontWeight="bold"
         fontSize={{ xs: "1.5rem", md: "2.125rem" }}
-        color="white"
+        color="#0E2148"
         textAlign="center"
         mb={4}
       >
@@ -46,8 +46,8 @@ const Educator = () => {
                   disablePictureInPicture
                   controlsList="nodownload nofullscreen noremoteplayback"
                   sx={{
-                    height: "100%",
-                    width: "100%",
+                    height: "170px",
+                    width: "300",
                     borderRadius: "8px 8px 0 0",
                     pointerEvents: "none",
                     "&::-webkit-media-controls": {
@@ -64,9 +64,9 @@ const Educator = () => {
                   image={item.src}
                   alt={item.name}
                   sx={{
-                    height: "100%",
+                    height: "170px",
                     borderRadius: "8px 8px 0 0",
-                    objectFit: "cover",
+                    objectFit: "inherit",
                   }}
                 />
               )}
