@@ -229,6 +229,7 @@ const OfferPopup = ({ open, onClose }) => {
                         style: { backgroundColor: "#fff", borderRadius: 5 },
                       }}
                     />
+                    {/* vị trí công việc */}
                     <TextField
                       type="text"
                       label="Vị trí công việc"
