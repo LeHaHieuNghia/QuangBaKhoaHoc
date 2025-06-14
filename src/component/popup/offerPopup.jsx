@@ -188,7 +188,7 @@ const OfferPopup = ({ open, onClose }) => {
                     {["name", "phone", "email"].map((field) => (
                       <TextField
                         key={field}
-                        label={
+                        placeholder={
                           field === "name"
                             ? "Họ và tên"
                             : field === "phone"
@@ -217,7 +217,7 @@ const OfferPopup = ({ open, onClose }) => {
                     ))}
                     <TextField
                       type="text"
-                      label="Tên công ty"
+                      placeholder="Tên công ty"
                       name="company"
                       fullWidth
                       required
@@ -233,7 +233,7 @@ const OfferPopup = ({ open, onClose }) => {
                     {/* vị trí công việc */}
                     <TextField
                       type="text"
-                      label="Vị trí công việc"
+                      placeholder="Vị trí công việc"
                       name="position"
                       fullWidth
                       required

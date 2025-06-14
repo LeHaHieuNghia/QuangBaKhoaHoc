@@ -18,7 +18,9 @@ const HeroSection = () => {
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const [open, setOpen] = useState(false);
 
-  const title = [{ id: 1, text: "Ứng Dụng AI - X2 Năng Suất Làm Việc" }];
+  const title = [
+    { id: 1, text: "Nâng cao hiệu suất với AI và dữ liệu thông minh" },
+  ];
 
   const subtitle = [
     {
