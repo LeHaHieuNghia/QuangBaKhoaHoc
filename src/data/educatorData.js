@@ -1,8 +1,8 @@
-// import NguyenThangLong from "../assets/Nguyen-Thang-Long.mp4";
-import LeLi from "../assets/Le-Li.mp4";
+import NguyenThangLong from "../assets/Nguyen-Thang-Long.png";
+import LeLi from "../assets/Le-Ly.png";
 import DinhDuyLinh from "../assets/Dinh-Duy-Linh.png";
-import NguyenThangLong from "../assets/nguyenThangLong.jpg";
 import PhamHuuPhucAn from "../assets/Pham-Huu-Phuc-An.png";
+
 export const EducatorData = [
   {
     id: 1,
@@ -21,7 +21,7 @@ export const EducatorData = [
   {
     id: 2,
     name: "Lê Li (Lily)",
-    type: "video",
+    type: "image",
     src: LeLi,
     description: [
       "AI Educator",

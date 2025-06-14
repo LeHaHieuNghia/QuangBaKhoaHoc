@@ -36,40 +36,18 @@ const Educator = () => {
                 margin: "0 auto",
               }}
             >
-              {item.type === "video" ? (
-                <CardMedia
-                  component="video"
-                  src={item.src}
-                  autoPlay
-                  loop
-                  muted
-                  disablePictureInPicture
-                  controlsList="nodownload nofullscreen noremoteplayback"
-                  sx={{
-                    height: "170px",
-                    width: "300",
-                    borderRadius: "8px 8px 0 0",
-                    pointerEvents: "none",
-                    "&::-webkit-media-controls": {
-                      display: "none !important",
-                    },
-                    "&::-webkit-media-controls-panel": {
-                      display: "none !important",
-                    },
-                  }}
-                />
-              ) : (
-                <CardMedia
-                  component="img"
-                  image={item.src}
-                  alt={item.name}
-                  sx={{
-                    height: "170px",
-                    borderRadius: "8px 8px 0 0",
-                    objectFit: "unset",
-                  }}
-                />
-              )}
+              <CardMedia
+                component="img"
+                image={item.src}
+                alt={item.name}
+                sx={{
+                  height: "350px",
+                  width: "100%",
+                  borderRadius: "8px 8px 0 0",
+                  objectFit: "revert-layer", // Giúp ảnh vừa khít vùng hiển thị
+                }}
+              />
+
               <CardContent sx={{ padding: "12px", flexGrow: 1 }}>
                 <Typography
                   variant="subtitle1"

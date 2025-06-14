@@ -1,7 +1,7 @@
 import NguyenMinhTri from "../assets/Nguyen-Minh-Tri.jpg";
 import TranMyLan from "../assets/Tran-My-Lan.jpg";
 import PhamQuocHuy from "../assets/Pham-Quoc-Huy.jpg";
-import LeThiMyDuyen from "../assets/Le-Thi-My-Duyen.jpg";
+// import LeThiMyDuyen from "../assets/Le-Thi-My-Duyen.jpg";k
 
 export const UserData = [
   {
