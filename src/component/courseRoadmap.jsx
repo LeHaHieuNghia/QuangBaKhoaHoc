@@ -1,5 +1,13 @@
 import React from "react";
-import { Box, Container, Typography, Grid, Paper } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Paper,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
@@ -13,37 +21,34 @@ const roadmapData = [
     title: "Tư duy nền tảng về AI – Lý do AI thay đổi cuộc chơi",
     description:
       "Tìm hiểu về lịch sử, khái niệm và ứng dụng của AI trong thực tế",
-    // duration: "2 tuần",
   },
   {
     title: "Làm chủ ChatGPT trong công việc",
     description: "Làm quen với ChatGPT, Midjourney và các công cụ AI phổ biến",
-    // duration: "3 tuần",
   },
   {
     title: "AI cho Marketing, Content, HR, Sales",
     description: "Học cách tích hợp AI vào quy trình làm việc hàng ngày",
-    // duration: "4 tuần",
   },
   {
     title: "Tự động hóa công việc với công cụ AI miễn phí",
     description: "Áp dụng kiến thức vào các dự án thực tế và nhận chứng chỉ",
-    // duration: "3 tuần",
   },
   {
     title: "Dự án cuối khóa + Nhận chứng chỉ OpenAI Foundation Knowledge",
     description: "Áp dụng kiến thức vào các dự án thực tế và nhận chứng chỉ",
-    // duration: "3 tuần",
   },
 ];
 
 const CourseRoadmap = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <Box
       sx={{
         py: { xs: 4, md: 8 },
         position: "relative",
-        // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${Background1})`,
         backgroundColor: "#2B67B0",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -55,7 +60,7 @@ const CourseRoadmap = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          background: "linear-gradient(45deg, #2B67B0",
+          background: "linear-gradient(45deg, #2B67B0 0%, #17487B 100%)",
           zIndex: 1,
         },
       }}
@@ -86,21 +91,20 @@ const CourseRoadmap = () => {
 
         <Grid container justifyContent="center">
           <Grid item xs={12} md={8}>
-            <Timeline
-              position="alternate"
-              sx={{
-                [`@media (max-width: 768px)`]: {
-                  padding: 0,
-                  margin: 0,
-                },
-              }}
-            >
+            <Timeline position="alternate">
               {roadmapData.map((item, index) => (
                 <TimelineItem
                   key={index}
                   sx={{
-                    [`@media (max-width: 768px)`]: {
-                      minHeight: "auto",
+                    [`& .MuiTimelineContent-root`]: {
+                      flex: 1,
+                      maxWidth: "100%",
+                    },
+                    [`& .MuiPaper-root`]: {
+                      textAlign: {
+                        xs: index % 2 === 0 ? "left" : "right",
+                        md: "left",
+                      },
                     },
                   }}
                 >
@@ -124,8 +128,7 @@ const CourseRoadmap = () => {
                   </TimelineSeparator>
                   <TimelineContent
                     sx={{
-                      paddingLeft: { xs: 1, md: 2 },
-                      paddingRight: { xs: 0, md: 2 },
+                      px: { xs: 2, md: 2 },
                     }}
                   >
                     <Paper
@@ -133,14 +136,12 @@ const CourseRoadmap = () => {
                       sx={{
                         p: { xs: 2, md: 3 },
                         mb: { xs: 1.5, md: 2 },
-                        transition: "all 0.3s ease-in-out",
+                        transition:
+                          "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
                         background: "rgba(255, 255, 255, 0.95)",
                         backdropFilter: "blur(10px)",
                         "&:hover": {
-                          transform: {
-                            xs: "translateX(4px)",
-                            md: "translateX(8px)",
-                          },
+                          transform: "translateY(-4px)",
                           boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
                           background: "#fff",
                         },
