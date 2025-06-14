@@ -124,10 +124,10 @@ const OfferPopup = ({ open, onClose }) => {
                   }}
                 >
                   <Typography variant="h5" fontWeight={700} color="#ffa645">
-                    VẬY CÒN CHẦN CHỪ GÌ NỮA?
+                    Nâng Cao Hiệu Suất với AI và
                   </Typography>
                   <Typography variant="h5" fontWeight={700} color="#ffa645">
-                    NHẬN NGAY ƯU ĐÃI NHÉ
+                    Dữ liệu thông minh
                   </Typography>
                 </Box>
                 <Box
