@@ -322,7 +322,7 @@ const Form = () => {
               <Stack spacing={2.5}>
                 {/* Họ và tên */}
                 <TextField
-                  label="Họ và tên"
+                  placeholder="Họ và tên"
                   name="name"
                   required
                   fullWidth
@@ -339,7 +339,7 @@ const Form = () => {
                 />
                 {/* Số điện thoại */}
                 <TextField
-                  label="Số điện thoại"
+                  placeholder="Số điện thoại"
                   name="phone"
                   type="tel"
                   required
@@ -357,7 +357,7 @@ const Form = () => {
                 />
                 {/* Email */}
                 <TextField
-                  label="Email"
+                  placeholder="Email"
                   name="email"
                   type="email"
                   required
@@ -375,7 +375,7 @@ const Form = () => {
                 />
                 {/* Tên công ty */}
                 <TextField
-                  label="Tên công ty"
+                  placeholder="Tên công ty"
                   name="company"
                   type="company"
                   required
@@ -394,7 +394,7 @@ const Form = () => {
                 {/* Chọn vị trí công việc (original field) */}
                 <TextField
                   type="text"
-                  label="Vị trí công việc"
+                  placeholder="Vị trí công việc"
                   name="position"
                   required
                   fullWidth

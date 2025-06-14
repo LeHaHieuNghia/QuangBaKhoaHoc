@@ -98,7 +98,7 @@ const Faq = () => {
                   <Typography
                     align="justify"
                     key={idx}
-                    variant="body2"
+                    variant="body1"
                     sx={{ mt: 0.5, lineHeight: 1.6 }}
                   >
                     {line}

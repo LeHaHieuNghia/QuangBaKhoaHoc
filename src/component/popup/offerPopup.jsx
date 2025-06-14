@@ -111,7 +111,6 @@ const OfferPopup = ({ open, onClose }) => {
 
   return (
     <>
-      <LoadingPopup open={isLoading} />
       <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
         <DialogContent sx={{ p: 0 }}>
           <Box bgcolor="white" px={{ xs: 2, md: 5 }} py={3}>
@@ -125,10 +124,10 @@ const OfferPopup = ({ open, onClose }) => {
                   }}
                 >
                   <Typography variant="h5" fontWeight={700} color="#ffa645">
-                    VẬY CÒN CHẦN CHỪ GÌ NỮA?
+                    Nâng Cao Hiệu Suất với AI và
                   </Typography>
                   <Typography variant="h5" fontWeight={700} color="#ffa645">
-                    NHẬN NGAY ƯU ĐÃI NHÉ
+                    Dữ liệu thông minh
                   </Typography>
                 </Box>
                 <Box
@@ -189,7 +188,7 @@ const OfferPopup = ({ open, onClose }) => {
                     {["name", "phone", "email"].map((field) => (
                       <TextField
                         key={field}
-                        label={
+                        placeholder={
                           field === "name"
                             ? "Họ và tên"
                             : field === "phone"
@@ -218,7 +217,7 @@ const OfferPopup = ({ open, onClose }) => {
                     ))}
                     <TextField
                       type="text"
-                      label="Tên công ty"
+                      placeholder="Tên công ty"
                       name="company"
                       fullWidth
                       required
@@ -234,7 +233,7 @@ const OfferPopup = ({ open, onClose }) => {
                     {/* vị trí công việc */}
                     <TextField
                       type="text"
-                      label="Vị trí công việc"
+                      placeholder="Vị trí công việc"
                       name="position"
                       fullWidth
                       required
@@ -272,6 +271,7 @@ const OfferPopup = ({ open, onClose }) => {
           </Box>
         </DialogContent>
       </Dialog>
+      <LoadingPopup open={isLoading} />
     </>
   );
 };

@@ -19,7 +19,7 @@ const HeroSection = () => {
   const [open, setOpen] = useState(false);
 
   const title = [
-    { id: 1, text: "Nâng Cao Hiệu Suất với AI và dữ liệu thông minh" },
+    { id: 1, text: "Nâng cao hiệu suất với AI và dữ liệu thông minh" },
   ];
 
   const subtitle = [
