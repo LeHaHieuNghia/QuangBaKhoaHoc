@@ -66,7 +66,7 @@ const Educator = () => {
                   sx={{
                     height: "170px",
                     borderRadius: "8px 8px 0 0",
-                    objectFit: "inherit",
+                    objectFit: "unset",
                   }}
                 />
               )}

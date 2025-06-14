@@ -1,13 +1,13 @@
-import NguyenThangLong from "../assets/Nguyen-Thang-Long.mp4";
+// import NguyenThangLong from "../assets/Nguyen-Thang-Long.mp4";
 import LeLi from "../assets/Le-Li.mp4";
 import DinhDuyLinh from "../assets/Dinh-Duy-Linh.png";
-import PhamHuuPhucAn from "../assets/phamHuuTrucAn.jpg";
-
+import NguyenThangLong from "../assets/nguyenThangLong.jpg";
+import PhamHuuPhucAn from "../assets/Pham-Huu-Phuc-An.png";
 export const EducatorData = [
   {
     id: 1,
     name: "Nguyễn Thăng Long (Alex)",
-    type: "video",
+    type: "image",
     src: NguyenThangLong,
     description: [
       "AI Educator",
@@ -49,7 +49,7 @@ export const EducatorData = [
   {
     id: 4,
     name: "Phạm Hữu Phúc Ân (Andy)",
-    type: "image",
+    type: "image  ",
     src: PhamHuuPhucAn,
     description: [
       "AI Educator",
