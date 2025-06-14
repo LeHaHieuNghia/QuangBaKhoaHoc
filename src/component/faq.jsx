@@ -73,7 +73,7 @@ const Faq = () => {
               </Box>
 
               <Typography
-                variant="subtitle1"
+                variant="h5"
                 align="justify"
                 fontWeight={600}
                 sx={{ flexGrow: 1 }}

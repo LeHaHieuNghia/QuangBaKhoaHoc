@@ -18,7 +18,9 @@ const HeroSection = () => {
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const [open, setOpen] = useState(false);
 
-  const title = [{ id: 1, text: "Ứng Dụng AI - X2 Năng Suất Làm Việc" }];
+  const title = [
+    { id: 1, text: "Nâng Cao Hiệu Suất với AI và dữ liệu thông minh" },
+  ];
 
   const subtitle = [
     {
@@ -88,7 +90,7 @@ const HeroSection = () => {
           {/* Text Section */}
           <Box
             sx={{
-              maxWidth: { xs: "100%", md: "60%" },
+              maxWidth: { xs: "100%", md: "65%" },
               textAlign: { xs: "center", md: "left" },
             }}
           >

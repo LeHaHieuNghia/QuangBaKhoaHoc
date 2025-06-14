@@ -14,8 +14,10 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import BusinessIcon from "@mui/icons-material/Business";
 import logoSuri from "../assets/logoSuri.png";
 import { contactInfo, officeLocations } from "../data/footer";
+import Qr from "../assets/qr.JPG";
 
 const Footer = () => {
   // Mapping function để convert string icon thành component
@@ -127,9 +129,12 @@ const Footer = () => {
 
           {/* Services Tags */}
         </Box>
-
         {/* Main Content Grid */}
-        <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
+        <Grid
+          sx={{ display: "flex", justifyContent: "center" }}
+          container
+          spacing={{ xs: 2, sm: 3, md: 4 }}
+        >
           {/* Company Description Card */}
           <Grid item xs={12} lg={6}>
             <Card
@@ -214,14 +219,14 @@ const Footer = () => {
           <Grid item xs={12} lg={6}>
             <Grid container spacing={{ xs: 2, md: 3 }} sx={{ height: "100%" }}>
               {/* Contact Information */}
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={4}>
                 <Card
                   sx={{
                     backgroundColor: "rgba(255, 255, 255, 0.05)",
                     backdropFilter: "blur(10px)",
                     border: "1px solid rgba(255, 184, 0, 0.2)",
                     borderRadius: { xs: 2, md: 3 },
-                    p: { xs: 2, sm: 2.5, md: 3 },
+                    p: { xs: 6, sm: 2.5, md: 3 },
                     height: "100%",
                     transition: "all 0.3s ease",
                     "&:hover": {
@@ -238,18 +243,19 @@ const Footer = () => {
                       fontWeight: 700,
                       color: "#FFB800",
                       display: "flex",
+                      fontSize: "23px",
                       alignItems: "center",
                       justifyContent: { xs: "center", sm: "flex-start" },
                       fontSize: { xs: "1.1rem", sm: "1.2rem", md: "1.25rem" },
-                      textAlign: { xs: "center", sm: "left" },
+                      textAlign: { xs: "left", sm: "left" },
                     }}
                   >
-                    <PhoneIcon
+                    {/* <PhoneIcon
                       sx={{
                         mr: 1,
-                        fontSize: { xs: "1.2rem", md: "1.5rem" },
+                        fontSize: { xs: "1.5rem", md: "1.5rem" },
                       }}
-                    />
+                    /> */}
                     Liên Hệ
                   </Typography>
                   <Box
@@ -268,6 +274,7 @@ const Footer = () => {
                             display: "flex",
                             alignItems: "center",
                             gap: { xs: 1, md: 1.5 },
+                            // fontSize: 34,
                             p: { xs: 1.5, md: 2 },
                             borderRadius: 2,
                             backgroundColor: "rgba(255, 255, 255, 0.03)",
@@ -278,23 +285,25 @@ const Footer = () => {
                             },
                           }}
                         >
-                          <IconComponent
+                          {/* <IconComponent
                             sx={{
                               color: "#FFB800",
                               fontSize: { xs: "1rem", md: "1.2rem" },
                               flexShrink: 0,
                             }}
-                          />
+                          /> */}
                           <Link
                             href={contact.href}
                             sx={{
                               color: "#E8F4F8",
                               textDecoration: "none",
+                              // fontSize: "23px",
                               fontWeight: 500,
+                              width: 300,
                               fontSize: {
-                                xs: "0.8rem",
-                                sm: "0.85rem",
-                                md: "0.9rem",
+                                xs: "1rem",
+                                sm: "1rem",
+                                md: "1rem",
                               },
                               wordBreak: "break-word",
                               "&:hover": {
@@ -313,7 +322,7 @@ const Footer = () => {
               </Grid>
 
               {/* Office Locations */}
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={4}>
                 <Card
                   sx={{
                     backgroundColor: "rgba(255, 255, 255, 0.05)",
@@ -343,12 +352,12 @@ const Footer = () => {
                       textAlign: { xs: "center", sm: "left" },
                     }}
                   >
-                    <LocationOnIcon
+                    {/* <LocationOnIcon
                       sx={{
                         mr: 1,
                         fontSize: { xs: "1.2rem", md: "1.5rem" },
                       }}
-                    />
+                    /> */}
                     Văn Phòng
                   </Typography>
                   <Box
@@ -375,14 +384,14 @@ const Footer = () => {
                           },
                         }}
                       >
-                        <LocationOnIcon
+                        {/* <LocationOnIcon
                           sx={{
                             color: "#FFB800",
                             fontSize: { xs: "1rem", md: "1.2rem" },
                             mt: 0.2,
                             flexShrink: 0,
                           }}
-                        />
+                        /> */}
                         <Typography
                           variant="body2"
                           sx={{
@@ -403,10 +412,129 @@ const Footer = () => {
                   </Box>
                 </Card>
               </Grid>
+
+              {/* Company Image */}
+              <Grid item xs={12} md={4}>
+                <Card
+                  sx={{
+                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 184, 0, 0.2)",
+                    borderRadius: { xs: 2, md: 3 },
+                    p: { xs: 6, sm: 2.5, md: 3 },
+                    height: "100%",
+                    transition: "all 0.3s ease",
+                    position: "relative",
+                    width: "360px",
+                    overflow: "hidden",
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.08)",
+                      transform: { xs: "none", md: "translateY(-4px)" },
+                      boxShadow: "0 12px 24px rgba(0, 0, 0, 0.2)",
+                    },
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      mb: { xs: 2, md: 3 },
+                      width: "full",
+                      fontWeight: 700,
+                      color: "#FFB800",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: { xs: "center", sm: "flex-start" },
+                      fontSize: { xs: "1.1rem", sm: "1.2rem", md: "1.25rem" },
+                      textAlign: { xs: "center", sm: "left" },
+                      // Width: "362px",
+                    }}
+                  >
+                    {/* <BusinessIcon
+                      sx={{
+                        mr: 1,
+                        fontSize: { xs: "1.2rem", md: "1.5rem" },
+                      }}
+                    /> */}
+                    Hình Ảnh
+                  </Typography>
+
+                  {/* Image Container */}
+                  <Box
+                    sx={{
+                      position: "relative",
+                      width: "100%",
+                      height: { xs: "200px", md: "240px" },
+                      borderRadius: 2,
+                      overflow: "hidden",
+                      Width: "362px",
+                      background:
+                        "linear-gradient(135deg, rgba(255, 184, 0, 0.2) 0%, rgba(255, 184, 0, 0.1) 100%)",
+                      display: "flex",
+                      alignItems: "center",
+                      // justifyContent: "center",
+                      // "&:hover .image-overlay": {
+                      //   opacity: 1,
+                      // },
+                    }}
+                  >
+                    {/* Placeholder for actual image */}
+                    <Box
+                      component="img"
+                      src={Qr}
+                      alt="Suri Technologies Office"
+                      sx={{
+                        width: "100%",
+                        // Width: "362px",
+                        height: "100%",
+                        objectFit: "fill",
+                        transition: "transform 0.3s ease",
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                        },
+                      }}
+                    />
+
+                    {/* Image Overlay */}
+                    {/* <Box
+                      className="image-overlay"
+                      sx={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background:
+                          "linear-gradient(45deg, rgba(255, 184, 0, 0.3) 0%, rgba(26, 26, 46, 0.5) 100%)",
+                        opacity: 0,
+                        transition: "opacity 0.3s ease",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    ></Box> */}
+                  </Box>
+
+                  {/* Image Description */}
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      mt: 2,
+                      color: "#E8F4F8",
+                      textAlign: "center",
+                      // Width: "362px",
+                      fontSize: { xs: "0.8rem", md: "0.85rem" },
+                      opacity: 0.9,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    Scan me
+                  </Typography>
+                </Card>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
-
         {/* Bottom Section */}
         <Box
           sx={{
@@ -429,7 +557,7 @@ const Footer = () => {
               fontWeight: 500,
             }}
           >
-            © {new Date().getFullYear()} SuriTechs.
+            © {new Date().getFullYear()} Suri Technology.
           </Typography>
 
           <Box
