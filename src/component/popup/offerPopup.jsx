@@ -111,7 +111,6 @@ const OfferPopup = ({ open, onClose }) => {
 
   return (
     <>
-      <LoadingPopup open={isLoading} />
       <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
         <DialogContent sx={{ p: 0 }}>
           <Box bgcolor="white" px={{ xs: 2, md: 5 }} py={3}>
@@ -272,6 +271,7 @@ const OfferPopup = ({ open, onClose }) => {
           </Box>
         </DialogContent>
       </Dialog>
+      <LoadingPopup open={isLoading} />
     </>
   );
 };

@@ -1,14 +1,27 @@
-import { Backdrop, CircularProgress, Typography } from "@mui/material";
+import {
+  Backdrop,
+  CircularProgress,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import { useState } from "react";
+import { createPortal } from "react-dom";
 
 export const LoadingPopup = ({ open }) => {
-  return (
+  return createPortal(
     <Backdrop
-      sx={{ color: "#ddd", zIndex: (theme) => theme.zIndex.modal + 1 }}
+      sx={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 2000,
+        color: "#ddd",
+      }}
       open={open}
     >
       <CircularProgress color="inherit" />
       <Typography>Vui lòng đợi</Typography>
-    </Backdrop>
+    </Backdrop>,
+    document.body
   );
 };
