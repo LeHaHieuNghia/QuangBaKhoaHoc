@@ -49,9 +49,9 @@ const Educator = () => {
                   <CardMedia
                     component="video"
                     src={item.src}
-                    autoPlay
-                    loop
                     muted
+                    controls={false} // Không hiển thị control
+                    autoPlay={false} // Không tự chạy
                     disablePictureInPicture
                     controlsList="nodownload nofullscreen noremoteplayback"
                     sx={{
@@ -59,7 +59,7 @@ const Educator = () => {
                       width: "100%",
                       objectFit: "cover",
                       objectPosition: "center top",
-                      pointerEvents: "none",
+                      pointerEvents: "none", // Không tương tác
                       "&::-webkit-media-controls": {
                         display: "none !important",
                       },
