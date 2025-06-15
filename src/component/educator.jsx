@@ -31,7 +31,8 @@ const Educator = () => {
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
-                maxWidth: 320,
+                maxWidth: 300,
+                width: "100%",
                 margin: "0 auto",
                 boxShadow: 3,
               }}

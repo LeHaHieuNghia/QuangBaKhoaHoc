@@ -467,7 +467,7 @@ const Footer = () => {
                       height: { xs: "200px", md: "240px" },
                       borderRadius: 2,
                       overflow: "hidden",
-                      Width: "362px",
+
                       background:
                         "linear-gradient(135deg, rgba(255, 184, 0, 0.2) 0%, rgba(255, 184, 0, 0.1) 100%)",
                       display: "flex",
@@ -557,7 +557,7 @@ const Footer = () => {
               fontWeight: 500,
             }}
           >
-            © {new Date().getFullYear()} Suri Technology.
+            copyright@ Suri Technologies
           </Typography>
 
           <Box

@@ -20,12 +20,31 @@ const contactInfo = [
     href: "mailto:tram@suritechs.com",
     text: "tram@suritechs.com",
   },
+  {
+    id: 4,
+    // type: "email",
+    // icon: "email",
+    href: "https://www.suritechs.com/",
+    text: "https://www.suritechs.com/",
+  },
 ];
 
 const officeLocations = [
   {
+    id: 1,
+    address: "VP HCM: 897 Hoàng Sa, P11, Quận 3, Tp HCM",
+  },
+  {
     id: 2,
-    address: "Địa chỉ: 5 Nam Kỳ Khởi Nghĩa, Phường 01, TP Đà Lạt, Lâm Đồng",
+    address: "VP Đà Lạt: 5 Nam Kỳ Khởi Nghĩa, Phường 01, TP Đà Lạt ",
+  },
+  {
+    id: 3,
+    address: "VP Lâm Hà: Thôn Phúc Hưng, Xã Tân Hà, Huyện Lâm Hà",
+  },
+  {
+    id: 4,
+    address: "Trụ sở India: Jaipur, Rajasthan, Ấn Độ",
   },
 ];
 // Export để sử dụng trong component
