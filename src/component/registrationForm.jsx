@@ -7,14 +7,12 @@ import {
   MenuItem,
   Stack,
   useTheme,
-  keyframes, // Keep useTheme if you plan to use it for global theme access later
+  keyframes,
 } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { SendMail } from "../services/sendMail";
 import { LoadingPopup } from "./popup/LoadingPopup";
-import { PositionData } from "../data/positionData"; // Keep this for the 'position' field
 import CountdownTimer from "./countdownTimer";
-const jobOptions = PositionData; // Keep this for the 'position' field
 
 const Form = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,17 +20,19 @@ const Form = () => {
     name: "",
     phone: "",
     email: "",
-    position: "", // Retained from your original code
+    position: "",
+    company: "",
   });
 
   const [error, setError] = useState({
     name: "",
     email: "",
     phone: "",
-    position: "", // Retained from your original code
+    position: "",
+    company: "",
   });
 
-  const theme = useTheme(); // You can still use the theme if needed for other styles
+  const theme = useTheme();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -63,7 +63,13 @@ const Form = () => {
       case "position": // Retained from your original code
         setError((prev) => ({
           ...prev,
-          position: jobOptions.includes(value) ? "" : "Vị trí không hợp lệ",
+          position: value.length < 5 ? "Vị trí công việc quá ngắn" : "",
+        }));
+        break;
+      case "company": // Retained from your original code
+        setError((prev) => ({
+          ...prev,
+          company: value.length < 5 ? "Tên công ty quá ngắn" : "",
         }));
         break;
       default:
@@ -97,7 +103,8 @@ const Form = () => {
       name: "",
       phone: "",
       email: "",
-      position: "", // Retained from your original code
+      position: "",
+      company: "",
     });
   }
 
@@ -124,8 +131,9 @@ const Form = () => {
           justifyContent: "center",
           alignItems: "center",
           minHeight: "100vh",
-          backgroundColor: "#D9D1C5",
+          backgroundColor: "white",
           px: { xs: 2, md: 5 },
+          color: "black ",
         }}
       >
         <Box
@@ -157,34 +165,35 @@ const Form = () => {
               sx={{
                 animation: `${shake} 0.9s ease-in-out infinite`,
                 display: "inline-block",
+                color: "white",
               }}
             >
               <Typography
                 variant="h5"
+                color="#ffa645"
                 sx={{
                   fontWeight: 700,
-                  color: "#5C4033",
                   mb: 2,
                 }}
                 fontSize={{ xs: "1.2rem", md: "1.6rem" }}
               >
-                VẬY CÒN CHẦN CHỪ GÌ NỮA?
+                Nâng Cao Hiệu Suất với AI và
               </Typography>
               <Typography
                 variant="h5"
+                color="#ffa645"
                 sx={{
                   fontWeight: 700,
-                  color: "#5C4033",
                   mb: 2,
                 }}
                 fontSize={{ xs: "1.9rem", md: "2.5rem" }}
               >
-                NHẬN NGAY ƯU ĐÃI NHÉ
+                Dữ liệu thông minh
               </Typography>
             </Box>
             <Box
               sx={{
-                backgroundColor: "rgba(236, 196, 118, 1)",
+                backgroundColor: "#2B67B0",
                 marginLeft: "10px",
                 border: "1px solid #000",
                 mb: 3,
@@ -210,18 +219,23 @@ const Form = () => {
                   fontSize={{ xs: "2.3rem", md: "4.2rem" }}
                   textTransform="uppercase"
                   mt={2}
-                  color="red"
+                  color="#ffa645"
                 >
                   FLASH SALE
                 </Typography>
-                <Typography mt={1} fontSize={16} color="red" fontWeight={600}>
+                <Typography
+                  mt={1}
+                  fontSize={16}
+                  color="#ffa645"
+                  fontWeight={600}
+                >
                   CHỈ 10 SLOT NHANH NHẤT
                 </Typography>
-                <Typography mt={1} fontWeight={600}>
+                <Typography color="white" mt={1} fontWeight={600}>
                   Khuyến mãi sắp kết thúc
                 </Typography>
                 <Box mt={1}>
-                  <CountdownTimer targetDate="2025-06-10T23:59:59" />
+                  <CountdownTimer />
                 </Box>
               </Box>
 
@@ -259,7 +273,7 @@ const Form = () => {
                 </Typography>
                 <Typography
                   p={2}
-                  bgcolor="red"
+                  bgcolor="#ffa645"
                   borderRadius="30px"
                   width="80%"
                   margin="0 auto"
@@ -283,7 +297,7 @@ const Form = () => {
           <Box
             sx={{
               flex: 1,
-              backgroundColor: "#B09680",
+              backgroundColor: "#27548A",
               p: { xs: 3, sm: 5 },
               display: "flex",
               flexDirection: "column",
@@ -308,7 +322,7 @@ const Form = () => {
               <Stack spacing={2.5}>
                 {/* Họ và tên */}
                 <TextField
-                  label="Họ và tên"
+                  placeholder="Họ và tên"
                   name="name"
                   required
                   fullWidth
@@ -325,7 +339,7 @@ const Form = () => {
                 />
                 {/* Số điện thoại */}
                 <TextField
-                  label="Số điện thoại"
+                  placeholder="Số điện thoại"
                   name="phone"
                   type="tel"
                   required
@@ -343,7 +357,7 @@ const Form = () => {
                 />
                 {/* Email */}
                 <TextField
-                  label="Email"
+                  placeholder="Email"
                   name="email"
                   type="email"
                   required
@@ -359,10 +373,28 @@ const Form = () => {
                     style: { backgroundColor: "#FFFFFF", borderRadius: "5px" },
                   }}
                 />
+                {/* Tên công ty */}
+                <TextField
+                  placeholder="Tên công ty"
+                  name="company"
+                  type="company"
+                  required
+                  fullWidth
+                  value={data.company}
+                  onChange={handleChange}
+                  error={!!error.company}
+                  helperText={error.company}
+                  InputLabelProps={{
+                    style: { color: "#5C4033" },
+                  }}
+                  InputProps={{
+                    style: { backgroundColor: "#FFFFFF", borderRadius: "5px" },
+                  }}
+                />
                 {/* Chọn vị trí công việc (original field) */}
                 <TextField
-                  select
-                  label="Chọn vị trí công việc"
+                  type="text"
+                  placeholder="Vị trí công việc"
                   name="position"
                   required
                   fullWidth
@@ -376,13 +408,7 @@ const Form = () => {
                   InputProps={{
                     style: { backgroundColor: "#FFFFFF", borderRadius: "5px" },
                   }}
-                >
-                  {jobOptions.map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {option}
-                    </MenuItem>
-                  ))}
-                </TextField>
+                />
               </Stack>
               <Button
                 type="submit"
@@ -394,11 +420,8 @@ const Form = () => {
                   py: 1.5,
                   fontSize: "1.1rem",
                   fontWeight: "bold",
-                  backgroundColor: "#5C4033", // Dark brown button color
+                  backgroundColor: "#ffa645", // Dark brown button color
                   color: "#FFFFFF",
-                  "&:hover": {
-                    backgroundColor: "#4A352A", // Darker brown on hover
-                  },
                   borderRadius: "5px",
 
                   animation: `${pulseAnimation} 1.5s infinite ease-in-out`,

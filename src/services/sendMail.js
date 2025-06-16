@@ -14,6 +14,7 @@ export const SendMail = async (data) => {
         email: data?.email,
         phone: data?.phone,
         position: data?.position,
+        company: data?.company,
         subject: `Đăng ký khóa học AI - ${data?.name}`,
       },
       VITE_EMAIL_USER_ID // public key

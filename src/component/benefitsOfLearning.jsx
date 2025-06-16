@@ -11,11 +11,12 @@ import SpeedIcon from "@mui/icons-material/Speed";
 import WorkIcon from "@mui/icons-material/Work";
 import SchoolIcon from "@mui/icons-material/School";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import CustomButton from "./button/button";
 
 const benefits = [
   {
     icon: <SpeedIcon sx={{ fontSize: 40 }} />,
-    title: "Tăng năng suất 3 lần với AI văn phòng",
+    title: "Tăng năng suất gấp 3 lần với AI văn phòng",
     description:
       "Học cách sử dụng AI để tự động hóa các công việc thường xuyên, giúp tăng năng suất lên gấp đôi",
   },
@@ -41,16 +42,23 @@ const benefits = [
 
 const Benefit = () => {
   return (
-    <Box sx={{ py: { xs: 4, md: 8 }, backgroundColor: "#f5f5f5" }}>
+    <Box
+      sx={{
+        py: { xs: 4, md: 8 },
+        backgroundColor: "#f5f5f5",
+      }}
+    >
       <Container maxWidth="lg">
         <Typography
           variant="h3"
           align="center"
           sx={{
             mb: { xs: 4, md: 6 },
-            fontSize: { xs: "1.75rem", sm: "2.25rem", md: "2.5rem" },
+            fontSize: { xs: "1.5rem", sm: "2.25rem", md: "2.5rem" },
             fontWeight: "bold",
             color: "#0E2148",
+
+            textAlign: "center",
           }}
         >
           Lợi ích khi tham gia khóa học
@@ -60,12 +68,13 @@ const Benefit = () => {
           container
           spacing={{ xs: 2, md: 4 }}
           justifyContent="center"
-          alignItems="center"
+          alignItems="stretch"
         >
           {benefits.map((benefit, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
               <Card
                 sx={{
+                  width: { xs: "300px", md: "800px" },
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
@@ -85,8 +94,8 @@ const Benefit = () => {
                     flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center",
-                    height: "100%",
-                    width: 800,
+                    width: "100%", // Fix width
+                    maxWidth: "100%", // Avoid overflow
                   }}
                 >
                   <Box
@@ -126,6 +135,16 @@ const Benefit = () => {
             </Grid>
           ))}
         </Grid>
+
+        <Box
+          sx={{
+            mt: { xs: 4, md: 6 },
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <CustomButton title="Đăng ký ngay" animation="shake" />
+        </Box>
       </Container>
     </Box>
   );

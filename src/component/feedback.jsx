@@ -93,14 +93,18 @@ const Feedback = () => {
                   }}
                 />
               </Box>
-              <Typography variant="body1" m={2}>
+              <Typography
+                variant="body1"
+                sx={{ textAlignLast: "center" }}
+                m={2}
+              >
                 {item.description}
               </Typography>
               <Box
                 sx={{
                   margin: 2,
                   display: "flex",
-                  flexDirection: { xs: "column", md: "row" },
+                  flexDirection: { xs: "column", md: "column" },
                   alignItems: "center",
                   justifyContent: "center",
                   textAlign: "center",

@@ -17,7 +17,8 @@ const Faq = () => {
         justifyContent: "center",
         width: "100%",
         py: 2,
-        backgroundColor: "#D9D1C5 ",
+        backgroundColor: "transparent",
+        willChange: "unset",
       }}
     >
       <Card
@@ -26,8 +27,6 @@ const Faq = () => {
           backgroundColor: "#FFFFFF",
           color: "#212121",
           width: "100%",
-          maxWidth: 720,
-          borderRadius: "30px",
           boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
         }}
       >
@@ -74,7 +73,7 @@ const Faq = () => {
               </Box>
 
               <Typography
-                variant="subtitle1"
+                variant="h5"
                 align="justify"
                 fontWeight={600}
                 sx={{ flexGrow: 1 }}
@@ -99,7 +98,7 @@ const Faq = () => {
                   <Typography
                     align="justify"
                     key={idx}
-                    variant="body2"
+                    variant="body1"
                     sx={{ mt: 0.5, lineHeight: 1.6 }}
                   >
                     {line}
